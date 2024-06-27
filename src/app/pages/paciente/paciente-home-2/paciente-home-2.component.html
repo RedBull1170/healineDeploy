@@ -1,0 +1,242 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<div class="sidenav">
+    <a href="/paciente-home-2"><span><i class="fas fa-user"></i></span> INFORMACION PERSONAL</a>
+    <a href="/citas"><span><i class="fas fa-calendar-alt"></i></span> CITAS</a>
+    <a href="/afiliacion"><span><i class="fas fa-id-card"></i></span> AFILIACION</a>
+    <a href="/historia"><span><i class="fas fa-file-medical"></i></span> HISTORIAL CLINICO</a>
+    <a (click)="mostrarEncuesta = true"><span><i class="fas fa-sign-out-alt"></i></span> CERRAR SESION</a>
+</div>
+
+<div class="overlay-medico" *ngIf="mostrarEncuesta" (click)="mostrarEncuesta = false">
+</div>
+<div class="encuesta-satisfaccion" *ngIf="mostrarEncuesta">
+    <button class="cerrar-btn" (click)="mostrarEncuesta = false">&#10006;</button>
+    <h3 style="text-align: center; font-size: 24px; margin-bottom: 20px; font-weight: 600; color: #181818;">Encuesta de Satisfacción</h3>
+    <form #encuestasForm="ngForm" (ngSubmit)="onSubmit()" style="max-width: 500px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);max-height: 400px; overflow-y: auto;  ">
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">Calificación del Aplicativo:</label>
+            <div style="display: flex; justify-content: space-between;">
+                <label>
+                    <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Excelente" style="display: none;">
+                    <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                </label>
+                <label>
+                    <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Muy Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                </label>
+                <label>
+                    <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                </label>
+                <label>
+                    <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Regular" style="display: none;">
+                    <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                </label>
+                <label>
+                    <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Deficiente" style="display: none;">
+                    <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                </label>
+            </div>      
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Qué tan fácil de usar encuentra el aplicativo?</label>
+            <div style="display: flex; justify-content: space-between;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Excelente" style="display: none;">
+                    <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Muy Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Regular" style="display: none;">
+                    <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Deficiente" style="display: none;">
+                    <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                </label>
+            </div>
+        </div>
+        
+
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Qué tan seguro se siente con respecto a la privacidad de sus datos?</label>
+            <div style="display: flex; justify-content: space-between;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Excelente" style="display: none;">
+                    <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Muy Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Regular" style="display: none;">
+                    <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Deficiente" style="display: none;">
+                    <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                </label>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 20px;">
+            <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Cómo calificaría la velocidad y el rendimiento general?</label>
+            <div style="display: flex; justify-content: space-between;">
+                <label style="cursor: pointer;">
+                    <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Excelente" style="display: none;">
+                    <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Muy Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Bueno" style="display: none;">
+                    <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Regular" style="display: none;">
+                    <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                </label>
+                <label style="cursor: pointer;">
+                    <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Deficiente" style="display: none;">
+                    <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                </label>
+            </div>
+        </div>
+        
+        
+        <div style="margin-bottom: 20px;">
+            <label for="opinion" style="font-weight: bold; font-size: 18px;">Comentarios u Opiniones:</label>
+            <textarea class="selectLogin" name="opinion" id="opinion" rows="5" placeholder="Comentarios u Opiniones" required [(ngModel)]="encuestas.opinion" style="width: 100%; padding: 10px; border-radius: 5px;"></textarea>
+        </div>
+
+        <button type="button" class="button button-contactForm boxed-btn-salir col-xl-4" style="border-radius: 20px; width: 100%;" (click)="salir()">Salir</button>ㅤ
+        <button type="submit" class="button button-contactForm boxed-btn col-xl-7" style="border-radius: 20px; width: 100%;">Enviar</button>
+    </form>
+</div> 
+
+
+
+
+
+<div style="margin-right: 20%; margin-left: 14%;">
+<div class="titulo">
+    <h1>INFORMACION PERSONAL</h1>
+</div>
+
+<div class="linkContenido">
+    <h2 style="text-align: center;"><i class="fas fa-file-medical"></i> ¡¡Bienvenido Paciente {{ userInfo.primerNombre }}!!</h2>
+    <p style="color: black; text-align: center; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+        ¡Bienvenido de vuelta!
+    </p>
+    <p style="color: black; text-align: center; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+        Nos alegra verte otra vez. Prepárate para una experiencia aún mejor.
+    </p>
+    
+    <a href="/editar-perfil-paciente" style="text-decoration: none; color: black;">
+        <div class="otroContenido">
+            <h2 style="text-align: center;"><i class="fas fa-user-edit"></i> EDITAR PERFIL</h2>
+            <p style="color: black; text-align: center; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+                ¡Actualiza Tu Perfil Ahora!
+            </p>
+            <p style="color: black; text-align: justify; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+                ¡Bienvenido de nuevo! Nos alegra verte de vuelta. Para garantizar que tu experiencia sea personalizada y completa, te invitamos a actualizar tu perfil con la información más reciente.
+            </p>
+            <p style="color: black; text-align: justify; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.6;">
+                Aquí puedes agregar detalles como tu nombre completo, Correo Electronico, Etc. Recuerda que un perfil completo nos ayuda a brindarte contenido y recomendaciones que se ajusten mejor a tus preferencias.
+            </p>
+            <ul>
+            </ul>
+        </div>
+    </a>
+</div>
+
+<div>
+    <a href="/registrar-peticion" class="update-agenda">
+        Realizar Peticion
+    </a><br>
+</div>
+<br><br><div class="section-divisor" style="width: 40%;"></div><br><br>
+            <div class="welcomeTitle" style="text-align: center;">
+                <h2 style="font-weight: 600;">¡¡{{userInfo.primerNombre}}!!</h2>
+                <p>Revisa Tus Peticiones Y/O Analiza Las Respuestas</p>
+            </div> 
+              <div style="background-color: rgb(255, 255, 255);">
+                <div>
+                    <table class="table table-striped table-responsive" style="width: 100%; margin: 0 auto; border-collapse: collapse;">
+                        <thead style="background-color: #0063cc;">
+                            <tr>
+                                <th style="padding: 15px; text-align: center; color: #fff; border-top-left-radius: 10px;">Tipo</th>
+                                <th style="padding: 15px; text-align: center; color: #fff;">Descripción</th>
+                                <th style="padding: 15px; text-align: center; color: #fff;">Email</th>
+                                <th style="padding: 15px; text-align: center; color: #fff; border-top-right-radius: 10px;">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let pqrs of pqrsMed" style="background-color: #f2f2f2;">
+                                <td style="padding: 12px; text-align: center;">{{ pqrs.tipo }}</td>
+                                <td style="padding: 12px; text-align: center;">{{ pqrs.descripcion }}</td>
+                                <td style="padding: 12px; text-align: center;">{{ pqrs.email }}</td>
+                                <td style="padding: 12px; text-align: center;">{{ pqrs.estado }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                </div>
+            </div>
+              <br><br>
+</div>
+
+
+<div class="menuderecha">
+    
+    
+    <img _ngcontent-ng-c439772529="" src="../../assets/images/logo.png" alt="" class="logo1">
+    <div class="infoMedicoContent" style="text-align: cennter;">
+        <p style="font-weight: 600;"></p>
+        <p>{{ userInfo.primerNombre }} {{ userInfo.segundoNombre }}</p>
+        <p>{{ userInfo.primerApellido }} {{ userInfo.segundoApellido }}</p>
+        <p>{{ userInfo.email }}</p>
+        <p>{{ userInfo.especialidad }}</p>
+    </div>
+    <div class="iframeMedico">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.041526618038!2d-122.14301908582862!3d37.42257507979185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806a58f70c27%3A0xd1a9227a8f5f693f!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1646208913084!5m2!1sen!2sus" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div><br><br>
+    <div class="media-body">
+        <h5>Colombia - Bogotá</h5>
+        <p>{{ userInfo.sede }}</p>
+
+    </div><br>
+    <div class="media-body">
+        <p>De Lunes A Domingo De 6am A 11pm</p>
+
+    </div><br>
+
+    <div class="media-body">
+        <h5>NovaEPS@gmail.com</h5>
+        <br>
+        <p>Envíenos su consulta en cualquier momento!</p>
+    </div>      
+</div>
+
+

@@ -1,0 +1,72 @@
+<div>
+    <button class="boton-admin" style="width: 60%; border-radius: 10px 10px 0 0; margin-left: 20%; margin-right: 20%;" (click)="goBack()">↺ Atrás</button>
+    
+</div>
+
+<div style="padding: 20px; display: flex; flex-direction: column; align-items: center;">
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; margin-bottom: 20px;">Editar Perfil</h1><br><br>
+    <form #usersForm="ngForm" (ngSubmit)="onSubmit()" style="width: 100%; max-width: 900px; display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 20px;">
+        <div style="margin-top: 5px;">
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">Documento:</p>
+                <p>{{ users.documento }}</p>
+            </div>
+            <br>
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">Tipo de Documento:</p>
+                <p>{{ users.tipoDoc }}</p>
+            </div>
+        </div>
+
+        <div>
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">1er Nombre:</p>
+                <input style="font-weight: 600; color: #787878;" class="selectLogin" name="nombre1" type="text" placeholder="1er Nombre" required [(ngModel)]="users.primerNombre">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">2do Nombre:</p>
+                <input style="font-weight: 600; color: #787878;" class="selectLogin" name="nombre2" type="text" placeholder="2do Nombre" required [(ngModel)]="users.segundoNombre">
+            </div>
+        </div>
+
+        <div>
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">1er Apellido:</p>
+                <input style="font-weight: 600; color: #787878;" class="selectLogin" name="apellido1" type="text" placeholder="1er Apellido" required [(ngModel)]="users.primerApellido">
+            </div>
+
+            <div style="margin-bottom: 20px;">
+                <p style="font-weight: bold;">2do Apellido:</p>
+                <input style="font-weight: 600; color: #787878;" class="selectLogin" name="apellido2" type="text" placeholder="2do Apellido" required [(ngModel)]="users.segundoApellido">
+            </div>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <p style="font-weight: bold;">Especialidad:</p>
+            <p>{{ users.especialidad }}</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <p style="font-weight: bold;">Número Telefónico:</p>
+            <input style="font-weight: 600; color: #787878;" class="selectLogin" name="numero" type="text" maxlength="10" placeholder="Número Telefónico (Max 10)" required [(ngModel)]="users.numero">
+        </div>
+        
+        
+        <div style="margin-bottom: 20px;">
+            <p style="font-weight: bold;">Email:</p>
+            <input style="font-weight: 600; color: #787878;" class="selectLogin" name="email" type="email" placeholder="Email (ejemplo123@gmail.com)" required [(ngModel)]="users.email">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <p style="font-weight: bold;">Sede:</p>
+            <p>{{ users.sede }}</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <div style="text-align: center; grid-column: span 3;">
+                <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!usersForm.form.valid && isFormSubmitted">Guardar Cambios</button>
+            </div>
+        </div>
+    </form>
+</div>

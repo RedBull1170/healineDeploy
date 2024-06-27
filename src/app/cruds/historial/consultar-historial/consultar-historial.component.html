@@ -1,0 +1,229 @@
+<style>
+    /* Estilos generales de la tabla */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    th {
+        background-color: #007BFF;
+        color: #fff;
+        border-top: 1px solid #ddd;
+    }
+    
+    tr:hover {
+        background-color: #f5f5f5;
+    }
+    
+    /* Estilo para las filas impares */
+    tr.odd {
+        background-color: #f9f9f9;
+    }
+    
+    /* Estilo para el mensaje cuando no hay elementos */
+    .empty-message {
+        margin-top: 10px;
+        color: #999;
+    }
+    
+    /* Estilos mejorados para los títulos */
+    h2 {
+        font-size: 24px;
+        color: #2c91d5;
+        margin-bottom: 15px;
+    }
+</style>
+
+<br>
+<div class="container" style="max-width: 1540px;">
+    <a href="/herramientas" style="margin-left: 4%;">
+        <button class="boton-admin" onclick="goBack()">↺ Atrás</button>
+    </a>
+</div>
+<div class="row no-gutters">
+    <div>
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Consultar Historial Medico</h1>
+    </div>
+    <div class="col-xl-11" style="background-color: #feffff;margin-top: 60px;">
+        <div>
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="buscarDocumento" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Buscar Por Documento</label> <br>
+                <input placeholder="Documento Del Paciente" type="text" class="form-control" [(ngModel)]="buscarDocumento" name="buscarDocumento" style="margin-left: 10%; margin-right: 10%; width: 80%;" (input)="filtrarUsuarios()">
+            </div>
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="buscarCorreo" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Buscar Por Email</label> <br>
+                <input placeholder="Email Del Paciente" type="text" class="form-control" [(ngModel)]="buscarCorreo" name="buscarCorreo" style="margin-left: 10%; margin-right: 10%; width: 80%;" (input)="filtrarUsuarios()">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row no-gutters" style="margin: 5%; margin-top: 20px;">
+        <div class="col-xl-11" style="background-color: rgb(255, 255, 255);">
+            <div class="table-responsive">
+                <table class="table table-striped" style="width: 90%; margin-top: 20px; font-weight: 600;">
+                    <thead>
+                        <tr>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff; border-top-left-radius: 10px;">Documento</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Primer Nombre</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Segundo Nombre</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Primer Apellido</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Segundo Apellido</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Email</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff;">Estado</th>
+                            <th style="padding: 12px; text-align: center; background-color: #009DFF; color: #fff; border-top-right-radius: 10px;">Detalles</th>
+                        </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                        <tr *ngFor="let user of usersPacientes; let i = index" [class.odd]="i % 2 !== 0">
+                            <td>{{ user.documento }}</td>
+                            <td>{{ user.primerNombre }}</td>
+                            <td>{{ user.segundoNombre }}</td>
+                            <td>{{ user.primerApellido }}</td>
+                            <td>{{ user.segundoApellido}}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.status }}</td>
+                            <td class="text-center">
+                                <a (click)="mostrarDetalles(user)">
+                                    <img src='../../../../assets/images/search.png' alt='Historial Medico' style='width: 19px; height: 19px;'>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="user" style="margin: 5%; margin-top: -30px;">
+        <!-- Mostrar detalles del usuario seleccionado -->
+        <div  class="row no-gutters" style="width: 90%; margin-top: 20px;">                
+            <div class="col-xl-5">
+                <h2>Lista de exámenes</h2>
+                <div *ngIf="examenesFiltrados.length > 0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Info del Paciente</th>
+                                <th>Nombre del Examen</th>
+                                <th>Resultado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let examen of examenesFiltrados">
+                                <td>{{ examen.paciente }}</td>
+                                <td>{{ examen.nombre }}</td>
+                                <td>{{ examen.resultado }}</td>
+                                <td>{{ examen.fecha }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="examenesFiltrados.length === 0">
+                    <p>No hay exámenes presentados hasta el momento.</p>
+                </div>
+            </div>
+            ㅤ
+            <div class="col-xl-5">
+                <h2>Lista de incapacidades</h2>
+                <div *ngIf="incapacidadesFiltradas.length > 0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Médico</th>
+                                <th>Fecha</th>
+                                <th>Tipo</th>
+                                <th>Detalles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let incapacidad of incapacidadesFiltradas">
+                                <td>{{ incapacidad.paciente }}</td>
+                                <td>{{ incapacidad.medico }}</td>
+                                <td>{{ incapacidad.fecha }}</td>
+                                <td>{{ incapacidad.tipo }}</td>
+                                <td>{{ incapacidad.detalles }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="incapacidadesFiltradas.length === 0">
+                    <p>No hay incapacidades presentadas hasta el momento.</p>
+                </div>
+            </div>
+            
+            <div class="col-xl-5">
+                <h2>Lista de órdenes</h2>
+                <div *ngIf="ordenesFiltradas.length > 0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Fórmula</th>
+                                <th>Diagnóstico</th>
+                                <th>Tratamiento</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let orden of ordenesFiltradas">
+                                <td>{{ orden.paciente }}</td>
+                                <td>{{ orden.formula }}</td>
+                                <td>{{ orden.diagnostico }}</td>
+                                <td>{{ orden.tratamiento }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="ordenesFiltradas.length === 0">
+                    <p>No hay órdenes presentadas hasta el momento.</p>
+                </div>
+            </div>
+            ㅤ
+            <div class="col-xl-5">
+                <h2>Lista de citas</h2>
+                <div *ngIf="citasFiltradas.length > 0">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Paciente</th>
+                                <th>Médico</th>
+                                <th>Especialidad</th>
+                                <th>Facturación</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cita of citasFiltradas">
+                                <td>{{ cita.fecha }}</td>
+                                <td>{{ cita.hora }}</td>
+                                <td>{{ cita.paciente }}</td>
+                                <td>{{ cita.medico }}</td>
+                                <td>{{ cita.especialidad }}</td>
+                                <td>{{ cita.facturacion }}</td>
+                                <td>{{ cita.estado }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div *ngIf="citasFiltradas.length === 0">
+                    <p>No hay citas presentadas hasta el momento.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

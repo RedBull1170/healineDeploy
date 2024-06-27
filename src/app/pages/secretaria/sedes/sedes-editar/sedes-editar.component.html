@@ -1,0 +1,44 @@
+<div style="margin-top: 10px; margin-left: 20%;">
+    <a href="/sedes-consultar">
+        <button class="boxed-btn" style="padding: 10px; font-weight: 600; text-decoration: none;">↺ Atrás</button>
+    </a>
+</div>
+<br><br>
+
+<div class="blue-box" style="margin-left: 20%; margin-right: 20%; border: 1px solid #cacaca; box-shadow: inset 2px 2px 2px 2px #a2a2a2; border-radius: 15px;">
+    <div>
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000; text-align: center;">Actualizar Sede</h1>
+        <div class="section-divisor"></div>
+    </div>
+
+    <form #sedesForm="ngForm" (ngSubmit)="onSubmit()">
+        <h4>ㅤ</h4>
+
+        <div style="margin-right: 5px;">
+            <input class="selectLogin" name="nombreSede" id="nombreSede" type="text" placeholder="Nombre de la Sede" required [(ngModel)]="sedes.nombreSede" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width:90%; font-size: 20px;">
+        </div>
+
+        <div style="margin-right: 5px; margin-top: -5px;">
+            <textarea class="selectLogin" name="direccion" id="direccion" rows="3" placeholder="Dirección de la Sede" required [(ngModel)]="sedes.direccion" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width:90%; font-size: 20px;"></textarea>
+        </div>
+        <a href="https://maps.app.goo.gl/J9z66AgJP2RMDZVt6"><p style="text-align: left; margin-top: -30px; margin-left: 5%;">¿No Sabes La Direccion? Averigualo En Maps</p></a>
+        <br>
+
+        <div style="margin-right: 5px; margin-top: -5px;">
+            <input class="selectLogin" name="telefonoSede" id="telefonoSede" type="text" maxlength="10" placeholder="Teléfono de la Sede (Max 10)" required [(ngModel)]="sedes.telefonoSede" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width:90%; font-size: 20px;">
+        </div>
+
+        <div style="margin-right: 5px;">
+            <select class="selectLogin" required [(ngModel)]="sedes.tipoServicio" name="tipoServicio" id="tipoServicio" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width:90%; font-size: 20px;">
+                <option value="" selected disabled>Selecciona Tipo de Servicio</option>
+                <option value="Hospital">Hospital</option>
+                <option value="Clínica">Clínica</option>
+                <option value="Centro De Salud">Centro de Salud</option>
+            </select>
+        </div>
+
+        <div class="form-group mt-3" style="margin-left: 5%;">
+            <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!sedesForm.form.valid && isFormSubmitted">Guardar Cambios</button>
+        </div><br>
+    </form>
+</div>

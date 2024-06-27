@@ -1,0 +1,64 @@
+<div style="margin-top: 10px; margin-left: 10px;">
+    <a href="/agenda-home">
+        <button class="boton-admin" onclick="goBack()">↺ Atrás</button>
+    </a>
+    
+</div> 
+<div >
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;" >Editar Agenda Medica</h1>
+</div> 
+<div class="row no-gutters">
+    <div class="col-xl-6" style="background-color: #feffff; ">
+        
+        <div style="background-color: #feffff; border-radius: 10px;">
+            <div>
+                <div>
+                    <form class="formCitaBuscar">
+                        <h1>ㅤ</h1>
+                        <div class="form-group">
+                            <label class="labelCitaBuscar" for="filtroMedico" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Médico</label>
+                            <input placeholder="ID o Nombre del Médico" type="text" class="form-control" [(ngModel)]="filtroMedico" name="filtroMedico" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                        </div>
+                        <h1>ㅤ</h1>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-xl-6" style="background-color: rgb(255, 255, 255); margin-top: 45px;">
+        <div class="d-flex align-items-center justify-content-center">
+            <table class="table table-striped" style="width: 100%; margin-top: 20px; font-weight: 600; margin: 5px;">
+                <thead>
+                    <tr>
+                        <th class="bg-primary text-white" style="border-radius: 15px 0 0 0; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">ID</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Fecha</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Hora Inicio</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Hora Fin</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Médico</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Descripción</th>
+                        <th class="bg-primary text-white" style="border-radius: 0 15px 0 0;padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let agenda of filtrarAgendas(agendas) || []; let i = index" [class.odd]="i % 2 !== 0">
+                        <td>{{ agenda.id }}</td>
+                        <td>{{ agenda.fecha }}</td>
+                        <td>{{ agenda.hora_inicio }}</td>
+                        <td>{{ agenda.hora_fin }}</td>
+                        <td>{{ agenda.medico }}</td>
+                        <td>{{ agenda.descripcion }}</td>
+                        <td class="text-center" >
+                            <a [routerLink]="['/editar-agenda/editar/', agenda.id]">
+                                <img src='../../../../assets/images/editar.png' alt='Editar Agenda' style='width: 19px; height: 19px;'>
+                            </a>ㅤ
+                            <a (click)="borrarAgenda(agenda.id.toString())" style="color: #fff;">
+                                <img src='../../../../assets/images/eliminar.png' alt='Eliminar Agenda' style='width: 19px; height: 19px;'>
+                            </a>
+                        </td>                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

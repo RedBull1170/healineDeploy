@@ -1,0 +1,56 @@
+<div class="container mt-4">
+    <a href="/secretaria-home-2" class="btn btn-outline-secondary text-decoration-none boxed-btn" style="padding: 10px; font-weight: 600;">
+        ↺ Atrás
+    </a>ㅤ
+    <a href="agenda-registrar-secretaria" class="btn btn-outline-secondary text-decoration-none boxed-btn" style="padding: 10px; font-weight: 600;">
+        Agregar Agenda Médica
+    </a>
+</div>
+
+<div class="container mt-4">
+    <div class="card border-primary shadow-lg" style="border-radius: 15px;">
+        <div class="card-body">
+            <form class="formCitaBuscar">
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="filtroMedico">Filtrar Por Médico</label>
+                    <input placeholder="ID o Nombre del Médico" type="text" class="form-control" [(ngModel)]="filtroMedico" name="filtroMedico">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="table-responsive" id="tabla-imprimir">
+        <table class="table table-bordered table-hover shadow-lg" style="border-radius: 15px;">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>ID</th>
+                    <th>Fecha</th>
+                    <th>Hora Inicio</th>
+                    <th>Hora Fin</th>
+                    <th>Médico</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let agenda of filtrarAgendas(agendas) || []; let i = index" [class.odd]="i % 2 !== 0">
+                    <td>{{ agenda.id }}</td>
+                    <td>{{ agenda.fecha }}</td>
+                    <td>{{ agenda.hora_inicio }}</td>
+                    <td>{{ agenda.hora_fin }}</td>
+                    <td>{{ agenda.medico }}</td>
+                    <td>{{ agenda.descripcion }}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/agenda-editar/editar/', agenda.id]" class="btn btn-sm btn-outline-primary mr-2">
+                            <img src="assets/images/editar.png" alt="Editar Agenda" style="width: 19px; height: 19px;">
+                        </a>
+                    </td> 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <a style="cursor: pointer;" (click)="imprimirTabla()"><img src="../../../../../assets/images/imprimir.png" width="35px" alt=""></a>
+</div>
+<br>

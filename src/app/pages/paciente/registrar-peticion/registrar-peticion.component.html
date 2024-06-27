@@ -1,0 +1,45 @@
+
+<br><br>
+<div>
+    <a href="/paciente-home-2">
+        <button class="boton-admin" style="width: 60%; border-radius: 10px 10px 0 0; margin-left: 20%; margin-right: 20%;">↺ Atrás</button>
+    </a>
+</div>
+<div class="blue-box" style="margin-left: 20%; margin-right: 20%; border: 1px solid #cacaca; box-shadow: inset 2px 2px 2px 2px #a2a2a2;">
+    
+    <div>
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Registrar Peticion</h1>
+        <div class="section-divisor"></div>
+    </div>
+
+    <form #peticionForm="ngForm" (ngSubmit)="onSubmit()">
+        <h4>ㅤ</h4>
+
+        <div style="margin-right: 5px;">
+            <select class="selectLogin" name="tipo" id="tipo" style="font-size: 20px;" [(ngModel)]="pqrs.tipo" required>
+                <option value="" selected disabled>Seleccione El Tipo</option>
+                <option value="Peticion">Petición</option>
+            </select>
+        </div>
+
+        <div style="margin-right: 5px; margin-top: 10px;">
+            <textarea class="selectLogin" name="descripcion" id="descripcion" rows="3" placeholder="Descripción De La Razón De La Peticion" required [(ngModel)]="pqrs.descripcion" style="font-size: 20px;"></textarea>
+        </div>
+        
+        <div style="margin-top: 10px;">
+            <p style="text-align: left; font-size: 20px;">{{userInfo.email}}</p>        
+        </div>
+
+        <div style="margin-top: 10px;">
+            <p style="text-align: left; font-size: 20px;">{{userInfo.numero}}</p>        
+        </div>
+
+        <div style="margin-top: 10px;">
+            <p style="text-align: left; font-size: 20px;">{{userInfo.documento}}</p>        
+        </div>
+
+        <div class="form-group mt-3">
+            <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!peticionForm.form.valid && isFormSubmitted">Registrar Petición</button>
+        </div>
+    </form>
+</div>

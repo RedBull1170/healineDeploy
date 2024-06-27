@@ -1,0 +1,64 @@
+<br><div>
+    <a href="/editar-consultar-incapacidad">
+        <div class="container" style="margin-left: 23%;">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+
+<div class="container" style="max-width: 900px; margin: 50px auto; padding: 20px; box-shadow: 0 4px 8px #000000; background-color: transparent; border-radius: 20px; margin-top: 25px;">
+    <h1 style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000; text-align: center;">Editar Incapacidad</h1>
+    <div class="orden-medica">
+        <form id="incapacidadForm" #incapacidadForm="ngForm" (ngSubmit)="onSubmit()">
+
+
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; background-color: #fff; box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);">
+                <label for="nombrePaciente" style="font-weight: bold; margin-right: 10px; color: #000;">Nombre del Paciente:</label>
+                <select required [(ngModel)]="incapacidad.paciente" name="paciente" id="paciente" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option *ngFor="let user of usersPacientes" [ngValue]="user.documento + ' ' + user.primerNombre + ' ' + (user.segundoNombre ? user.segundoNombre + ' ' : '') + user.primerApellido + ' ' + (user.segundoApellido ? user.segundoApellido : '')">
+                        {{ user.documento }} - {{ user.primerNombre }} {{ user.segundoNombre }} {{ user.primerApellido }} {{ user.segundoApellido }}
+                    </option>
+                </select>            
+            </div>
+
+        
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; background-color: #fff; box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);">
+                <label for="medico" style="font-weight: bold; margin-right: 10px; color: #000;">Médico Tratante:</label>
+                <select required [(ngModel)]="incapacidad.medico" name="medico" id="medico" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option *ngFor="let user of usersMedicos" [ngValue]="user.documento + ' ' + user.primerNombre + ' ' + (user.segundoNombre ? user.segundoNombre + ' ' : '') + user.primerApellido + ' ' + (user.segundoApellido ? user.segundoApellido : '')">
+                        {{ user.documento }} - {{ user.primerNombre }} {{ user.segundoNombre }} {{ user.primerApellido }} {{ user.segundoApellido }}
+                    </option>
+                </select>            
+            </div>
+
+            
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; background-color: #fff; box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);">
+                <label for="fechaIncapacidad" style="font-weight: bold; margin-right: 10px; color: #000;">Fecha de Incapacidad:</label>
+                <select required [(ngModel)]="incapacidad.fecha" name="cita" id="cita" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option *ngFor="let cita of citas" [ngValue]="cita.fecha">
+                        {{ cita.paciente }} - {{ cita.fecha }}
+                    </option>
+                </select>               
+            </div>
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; background-color: #fff; box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);">
+                <label for="tipoIncapacidad" style="font-weight: bold; margin-right: 10px; color: #000;">Tipo de Incapacidad:</label>
+                <select required [(ngModel)]="incapacidad.tipo" id="tipoIncapacidad" name="tipoIncapacidad" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option value="">Seleccione un tipo</option>
+                    <option value="enfermedad">Enfermedad</option>
+                    <option value="accidente">Accidente</option>
+                    <option value="maternidad">Maternidad</option>
+                    <option value="otros">Otros</option>
+                </select>
+            </div>
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px;background-color: #fff; box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);">
+                <label for="detalleIncapacidad" style="font-weight: bold; margin-right: 10px; color: #000;">Detalles de la Incapacidad:</label>
+                <textarea required [(ngModel)]="incapacidad.detalles" id="detalleIncapacidad" name="detalleIncapacidad" style="padding: 10px; border: none; width: 100%; font-size: 14px; margin-top: 5px;" rows="4" placeholder="Ingrese Los Detalles De La Incapacidad"></textarea>
+            </div>
+            <div class="orden-info" style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="button button-contactForm boxed-btn" [disabled]="!incapacidadForm.form.valid && isFormSubmitted">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

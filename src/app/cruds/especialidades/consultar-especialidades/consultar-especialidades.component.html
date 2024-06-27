@@ -1,0 +1,56 @@
+<br><div>
+    <a href="/especialidades-home">
+        <div class="container">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+<div>
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Consultar <br>Especialidad</h1>
+</div>
+
+<div class="row no-gutters">
+    <div class="col-xl-6" style="background-color: #feffff; margin-top: 130px;">
+        <div style="margin-top: -90px;">
+            <div>
+                <form>
+                    <h1>ㅤ</h1>
+                    <div class="form-group">
+                        <label class="labelSedeBuscar" for="filtroNombreEspecialidad" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; margin-left: 10%; margin-right: 10%;">Filtrar Por Nombre de Especialidad</label>
+                        <input placeholder="Nombre de Especialidad" type="text" class="form-control" [(ngModel)]="filtroNombreEspecialidad" name="filtroNombreEspecialidad" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                    </div>
+                    <h1>ㅤ</h1>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-xl-6" style="background-color: #feffff;margin-top: 40px; ">
+        <div class="row justify-content-center">
+            <div class="col-xl-12">
+                <div class="card" style="border-radius: 30px;">
+                    <div class="card-body">
+                        <h2 class="card-title" style="text-align: center; font-weight: 550;">Especialidades <br>ㅤ</h2>
+                        <table class="table table-striped" style="width: 100%; margin-top: 20px; font-weight: 600;">
+                            <thead>
+                                <tr>
+                                    <th class="bg-primary text-white" style="border-radius: 15px 0 0 0; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">ID</th>
+                                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Nombre</th>
+                                    <th class="bg-primary text-white" style="border-radius: 0 15px 0 0;padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Salario</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let especialidad of filtrarEspecialidades(especialidades) || []; let i = index" [class.odd]="i % 2 !== 0">
+                                    <td>{{ especialidad.id }}</td>
+                                    <td>{{ especialidad.nombre }}</td>
+                                    <td>{{ especialidad.salario }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

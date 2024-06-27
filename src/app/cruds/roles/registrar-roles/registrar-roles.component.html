@@ -1,0 +1,25 @@
+<div style="margin-top: 10px; margin-left: 30%;">
+    <a href="/roles-home">
+        <button class="boton-admin" onclick="goBack()">↺ Atrás</button>
+    </a>
+</div>
+<br><br><br>
+
+<div class="blue-box" style="margin-left: 30%; margin-right: 30%; box-shadow: inset 4px 4px 4px 4px #cacaca; border:none">
+    <div>
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Registrar Rol</h1>
+        <div class="section-divisor"></div>
+    </div>
+
+    <form #rolesForm="ngForm" (ngSubmit)="onSubmit()">
+        <h4>ㅤ</h4>
+
+        <div style="margin-right: 5px;">
+            <input class="selectLogin" name="nombreRol" id="nombreRol" type="text" placeholder="Nombre del Rol" required [(ngModel)]="roles.nombreRol" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+        </div>
+
+        <div class="form-group mt-3">
+            <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!rolesForm.form.valid && isFormSubmitted">Registrar Rol</button>
+        </div>
+    </form>
+</div>

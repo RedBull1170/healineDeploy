@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body style="background-color: #f0f0f0; height: 100vh; margin: 0; padding: 50px; display: flex; justify-content: center; align-items: center; font-family: Arial, sans-serif;">
+    
+    <div class="recovery-container row">
+        <div class="col-xl-9" style="border-right: 1px solid #a3a3a3;">
+            <h2 style="font-weight: 600; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; text-shadow: 1px 1px 2px rgba(133, 133, 133, 0.157); color: #515151;">Recuperar Contraseña</h2>
+            <form class="recovery-form" (ngSubmit)="enviarCorreo()">
+                <div class="form-group">
+                    <label for="email" style="font-weight: 600;">Correo Electrónico:</label>
+                    <input placeholder="Ingresa El Email Con El Que Te Registraste" style="border-radius: 15px;" type="email" id="email" name="email" [(ngModel)]="email" required>
+                <a href="/login" style="color: #8b8b8b; font-size: 12px; font-weight: 600; text-decoration: none; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">¿Deseas Volver Al Login?</a>
+
+                </div>
+
+                <button type="submit" class="boxed-btn">Enviar Enlace de Recuperación</button>
+            </form>
+
+        </div>
+        <div class="col-xl-3">
+            <div class="text-center">
+                <img src="../../../../assets/images/password.png" width="118px" alt="">
+            </div><br>
+            <div class="message-container">
+                <p>Has acudido al lugar correcto para restablecer una contraseña olvidada.</p>
+            </div>
+        </div>
+        <br>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+.boxed-btn {
+    background: #fff;
+    color: #131313;
+    display: inline-block;
+    padding: 18px 44px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid #009DFF;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #009DFF !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.4s;
+  }
+  
+  .boxed-btn:hover {
+    background: #009DFF;
+    color: #fff !important;
+    border: 1px solid #009DFF;
+  }

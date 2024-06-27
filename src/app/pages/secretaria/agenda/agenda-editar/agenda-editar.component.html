@@ -1,0 +1,48 @@
+<div style="margin-left: 40%;">
+    <a href="/agenda-consultar" class="text-decoration-none boxed-btn" style="padding: 10px; font-weight: 600;">
+        ↺ Atrás
+    </a>
+</div>
+<div class="page-title mt-4">
+    <h1 class="title1">Editar Agenda Médica</h1>
+</div>
+<br>
+<div class="form-container mt-8">
+    <div class="card border-primary shadow-lg" style="border-radius: 15px;">
+        <div class="card-body">
+            
+            <form #agendaForm="ngForm" (ngSubmit)="onSubmit()" class="styled-form">
+                <h4 class="form-divider">ㅤ</h4>
+
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="fecha">Fecha de Agenda</label>
+                    <input class="form-control" name="fecha" id="fecha" type="date" placeholder="Fecha" required [(ngModel)]="agenda.fecha">
+                </div>
+
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="horaInicio">Hora de Inicio</label>
+                    <input class="form-control" name="hora_inicio" id="hora_inicio" type="time" placeholder="Hora de Inicio" required [(ngModel)]="agenda.hora_inicio">
+                </div>
+
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="horaFin">Hora de Fin</label>
+                    <input class="form-control" name="hora_fin" id="hora_fin" type="time" placeholder="Hora de Fin" required [(ngModel)]="agenda.hora_fin">
+                </div>
+
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="medico">Médico</label>
+                    <div class="medico-info form-control">{{ agenda.medico }}</div>
+                </div>
+
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="descripcion">Descripción</label>
+                    <input class="form-control" name="descripcion" id="descripcion" type="text" placeholder="Descripción" required [(ngModel)]="agenda.descripcion">
+                </div>
+
+                <div class="form-group mt-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="!agendaForm.form.valid && isFormSubmitted">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú de Sistema de Salud</title>
+    <style>
+        /* Estilos básicos para el menú */
+        .sidenav {
+            width: 250px; /* Ancho del menú lateral */
+            position: fixed;
+            z-index: 100;
+            top: 0;
+            left: 0;
+            background-color: #4077dd;
+            padding-top: 20px;
+            height: 100%;
+        }
+
+        .sidenav a {
+            padding: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #ffffff;
+            display: block;
+            background-color: transparent;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            margin-bottom: 40px; /* Separación entre botones */
+            position: relative; /* Añadido */
+            padding-left: 40px; /* Añadido para hacer espacio para el icono */
+        }
+
+        .sidenav a span {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .sidenav a:hover {
+            background-color: #314d83;
+            color: white;
+        }
+
+        .main {
+            margin-left: 250px; /* Dejar espacio a la izquierda para el menú */
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para el formulario */
+        .appointment-form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .appointment-form h2 {
+            text-align: center;
+        }
+
+        .appointment-form input[type="text"],
+        .appointment-form input[type="email"],
+        .appointment-form select,
+        .appointment-form textarea,
+        .appointment-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .appointment-form input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .appointment-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <!-- Agrega la referencia a Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<div class="sidenav">
+    <a href="/paciente-home-2"><span><i class="fas fa-user"></i></span> INFORMACION PERSONAL</a>
+    <a href="/citas"><span><i class="fas fa-calendar-alt"></i></span> CITAS</a>
+    <a href="/afiliacion"><span><i class="fas fa-id-card"></i></span> AFILIACION</a>
+    <a href="/historia"><span><i class="fas fa-file-medical"></i></span> HISTORIA MEDICA</a>
+    <a href="/Index"><span><i class="fas fa-sign-out-alt"></i></span> CERRAR SESION</a>
+</div>
+
+<div class="main">
+    <!-- Contenido principal de la página aquí -->
+    <h1>CERTIFICACIONES</h1>
+    <p></p>
+</div>
+
+</body>
+</html>

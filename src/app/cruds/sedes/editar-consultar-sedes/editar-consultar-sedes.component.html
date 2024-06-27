@@ -1,0 +1,65 @@
+<br><div>
+    <a href="/sedes-home">
+        <div class="container">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+
+<div>
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Editar Sedes</h1>
+</div>
+
+<div style="background-color: #feffff; border-radius: 10px;">
+    <div>
+        <div>
+            <form class="formSedeBuscar">
+                <h1>ㅤ</h1>
+
+                <div class="form-group">
+                    <label class="labelSedeBuscar" for="filtroNombreSede" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; margin-left: 10%; margin-right: 10%;">Filtrar Por Nombre de Sede</label>
+                    <input placeholder="Nombre de Sede" type="text" class="form-control" [(ngModel)]="filtroNombreSede" name="filtroNombreSede" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                </div>
+
+                <h1>ㅤ</h1>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="row no-gutters" style="margin-left: 10px; margin-top: 20px;">
+    <div>
+        <div class="table-responsive">
+            <table class="table table-striped" style="width: 100%; margin-top: 20px; font-weight: 600;">
+                <thead>
+                    <tr>
+                        <th class="bg-primary text-white" style="border-radius: 15px 0 0 0; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">ID</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Nombre</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Dirección</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Teléfono</th>
+                        <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Tipo de Servicio</th>
+                        <th class="bg-primary text-white" style="border-radius: 0 15px 0 0;padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sede of filtrarSedes(sedes) || []; let i = index" [class.odd]="i % 2 !== 0">
+                        <td>{{ sede.id }}</td>
+                        <td>{{ sede.nombreSede }}</td>
+                        <td>{{ sede.direccion }}</td>
+                        <td>{{ sede.telefonoSede }}</td>
+                        <td>{{ sede.tipoServicio }}</td>
+                        <td class="text-center">
+                            <a [routerLink]="['/editar-sedes/editar/', sede.id]">
+                                <img src='../../../../assets/images/editar.png' alt='Editar sedes' style='width: 19px; height: 19px;'>
+                            </a>ㅤ
+                            <a (click)="borrarSedes(sede.id.toString())" style="color: #fff;">
+                                <img src='../../../../assets/images/eliminar.png' alt='Eliminar sedes' style='width: 19px; height: 19px;'>
+                            </a>
+                        </td> 
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div style="margin-top: 10px; margin-left: 30%;">
+    <a href="/especialidades-home">
+        <button class="boton-admin" onclick="goBack()">↺ Atrás</button>
+    </a>
+</div>
+<div class="container" style="max-width: 700px; margin: 50px auto; padding: 20px; box-shadow: 0 4px 8px #000000; background-color: transparent; border-radius: 20px; margin-top: 25px;">
+    <h1 style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000; text-align: center;">Editar Especialidad <br> Medica</h1>
+    <div class="orden-medica">
+        <form id="formulaMedicaForm" #especialidadesForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="orden-info">
+                <label for="nomEsp" style="font-weight: bold; margin-right: 10px; color: #000;">Nombre de la Especialidad:</label>
+                <input required [(ngModel)]="especialidades.nombre" type="text" id="nomEsp" name="nomEsp" placeholder="Nombre de la especialidad médica" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;">
+            </div>
+            <div class="orden-info">
+                <label for="precio" style="font-weight: bold; margin-right: 10px; color: #000;">Salario:</label>
+                <input required [(ngModel)]="especialidades.salario" type="text" id="precio" name="precio" placeholder="Salario de la especialidad médica" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;" (input)="formatSalary($event)">
+            </div>
+            
+            <div class="orden-info" style="text-align: center; margin-top: 10px;">
+                <button class="button button-contactForm boxed-btn" type="submit" [disabled]="!especialidadesForm.form.valid && isFormSubmitted">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+        
+    </div>
+</div>

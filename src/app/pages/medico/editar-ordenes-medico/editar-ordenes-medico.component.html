@@ -1,0 +1,40 @@
+<div>
+    <a href="/medico-ordenes">
+        <button class="boton-admin" style="width: 57%; border-radius: 0 0 10px 10px; margin-left: 21.5%; margin-right: 21.5%;">↺ Atrás</button>
+    </a>
+</div>
+<div class="container" style="max-width: 900px; margin: 50px auto; padding: 20px; box-shadow: 0 4px 8px #000000; background-color: transparent; border-radius: 20px; margin-top: 25px;">
+    <h1 style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000; text-align: center;">Editar Orden Médica</h1>
+    <div class="orden-medica">
+        <form id="ordenMedicaForm"  #ordenesForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);">
+                <label for="paciente" style="font-weight: bold; margin-right: 10px; color: #000;">Paciente:</label>
+                <p>{{ ordenes.paciente }}</p>   
+            </div>
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);">
+                <label for="formula" style="font-weight: bold; margin-right: 10px; color: #000;">Fórmulas:</label>
+                <select required [(ngModel)]="ordenes.formula" name="formula" id="formula" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option *ngFor="let formula of formulas" [ngValue]="formula.id + ' ' + formula.nombreMedicamento">
+                        {{ formula.id }} - {{ formula.nombreMedicamento }}
+                    </option>
+                </select>     
+            </div> 
+            
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);">
+                <label for="diagnostico" style="font-weight: bold; margin-right: 10px; color: #000;">Diagnóstico:</label>
+                <textarea required [(ngModel)]="ordenes.diagnostico" id="diagnostico" name="diagnostico" placeholder="Descripción del Diagnóstico" style="padding: 10px; border: none; width: 100%; font-size: 14px; margin-top: 5px;"></textarea>
+            </div>
+
+            <div class="orden-info" style="border: 1px solid #ccc; border-radius: 5px; padding: 10px; margin-top: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);">
+                <label for="tratamiento" style="font-weight: bold; margin-right: 10px; color: #000;">Tratamiento:</label>
+                <textarea required [(ngModel)]="ordenes.tratamiento" id="tratamiento" name="tratamiento" placeholder="Descripción del Tratamiento" style="padding: 10px; border: none; width: 100%; font-size: 14px; margin-top: 5px;"></textarea>
+            </div>
+            
+            <div class="orden-info" style="text-align: center; margin-top: 20px;">
+                <button type="submit" class="button button-contactForm boxed-btn" [disabled]="!ordenesForm.form.valid && isFormSubmitted">
+                   Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

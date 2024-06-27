@@ -1,0 +1,87 @@
+<div>
+    <a href="/editar-consultar-citas-medico">
+        <button class="boton-admin" style="width: 60%; border-radius: 0 0 10px 10px; margin-left: 20%; margin-right: 20%;">↺ Atrás</button>
+    </a>
+</div>
+<br>
+<div style="background-color: #feffff; margin-right: 20%; margin-left: 20%;" >
+    
+
+    <div>
+        <div style="border: 2px solid #9e9e9e; border-radius: 10px; box-shadow: inset 0 0 18px rgba(0, 0, 0,2);">
+            <br>
+            <div>
+                <h1 class="custom-title" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Editar Cita Médica</h1>
+            </div>
+            <br>
+            
+            <form class="formCitaBuscar" #citasForm="ngForm" (ngSubmit)="onSubmit()">
+                <div style="margin-right: 5px;">
+                    <label class="labelCitaBuscar" for="fecha" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">
+                        Fecha
+                    </label>
+                    <input class="selectLogin" name="fecha" id="fecha" type="date" placeholder="Fecha" required [(ngModel)]="citas.fecha" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                </div>
+
+                <div style="margin-right: 5px; margin-top: -5px;">
+                    <label class="labelCitaBuscar" for="horaInicio" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; ">
+                        Hora
+                    </label>
+                    <input class="selectLogin" name="hora_inicio" id="hora_inicio" type="time" placeholder = 'hora_inicio' required [(ngModel)]="citas.hora" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                </div>
+
+                <div style="margin-right: 5px; margin-top: -5px;">
+                    <label class="labelCitaBuscar" for="paciente" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; ">
+                        Paciente
+                    </label>
+                    <p>{{citas.paciente}}</p>
+                </div><br>
+
+                <div style="margin-right: 5px; margin-top: -5px;">                         
+                    <div style="margin-right: 5px; margin-top: -5px;">
+                        <label class="labelCitaBuscar" for="medico" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">Médico</label>
+                        <p>{{userInfo.documento}} - {{userInfo.primerNombre}} {{userInfo.segundoNombre}}</p>
+                    </div><br>
+                </div>
+                
+                <div style="margin-right: 5px; margin-top: -5px;">
+                    <label class="labelCitaBuscar" for="especialidad" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">Especialidad</label>
+                    <select required [(ngModel)]="citas.especialidad" name="especialidad" id="especialidad" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" disabled selected>Seleccionar especialidad</option>
+                        <option *ngFor="let especialidad of especialidades" [ngValue]="especialidad.nombre">
+                            {{ especialidad.id }} - {{ especialidad.nombre }} 
+                        </option>
+                    </select>
+                </div>
+
+                <div style="margin-right: 5px; margin-top: -5px;">
+                    <label class="labelCitaBuscar" for="facturacion" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; ">
+                        Facturacion
+                    </label>
+                    <select required [(ngModel)]="citas.facturacion" name="facturacion" id="facturacion" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" selected disabled>Selecciona El Estado De La Factura</option>
+                        <option value="pendiente" style="color: orange">Pendiente</option>
+                        <option value="pagada" style="color: green;">Pagada</option>
+                    </select>                          
+                </div>
+                
+                <div style="margin-right: 5px; margin-top: -5px;">
+                    <label class="labelCitaBuscar" for="estado" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; ">
+                        Estado
+                    </label>
+                    <select required [(ngModel)]="citas.estado" name="estado" id="estado" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" selected disabled>Selecciona El Estado De La Cita</option>
+                        <option value="pendiente" style="color: orange">Pendiente</option>
+                        <option value="cancelada" style="color: #bd1b1b;">Cancelada</option>
+                        <option value="confirmada" style="color: green;">Confirmada</option>
+                    </select>                        
+                </div>
+                
+                
+                <div class="form-group mt-3">
+                    <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!citasForm.form.valid && isFormSubmitted">Guardar Cambios</button>
+                </div>
+    </form>
+        </div>
+    </div>
+</div><br>

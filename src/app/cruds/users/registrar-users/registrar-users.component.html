@@ -1,0 +1,97 @@
+<div style="margin-top: 10px; margin-left: 10%;">
+    <a href="/usuarios-home">
+        <button class="boton-admin2" onclick="goBack()">↺ Atrás</button>
+    </a>
+    
+</div>
+<div class="blue-box">
+    <div >
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;" >Registrar Usuario</h1>
+        <div class="section-divisor" ></div>
+    </div>
+    
+    <form #usersForm="ngForm" (ngSubmit)="onSubmit()">
+        <h4>ㅤ</h4>
+            <div style="margin-right: 5px;">
+                <input class="selectLogin" name="documento" id="name" type="text" maxlength="10" placeholder="Documento (Max 10)" required [(ngModel)]="users.documento" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            
+            </div>
+
+            <div style="margin-right: 5px;">
+                <select class="selectLogin" required [(ngModel)]="users.tipoDoc" name="tipo" id="tipo_documento"  style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                    <option value="" selected disabled>Selecciona Tipo De Documento</option>
+                    <option value="CC">CC</option>
+                    <option value="TI">TI</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value="NIT">NIT</option>
+                </select>
+             </div>
+
+            
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="nombre1" id="name" type="text" placeholder = '1er Nombre' required [(ngModel)]="users.primerNombre" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            </div>
+
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="nombre2" id="name" type="text" placeholder = '2do Nombre' required [(ngModel)]="users.segundoNombre" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">nn
+            </div>
+            
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="apellido1" id="name" type="text" placeholder = '1er Apellido' required [(ngModel)]="users.primerApellido" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            </div>
+
+            <div style="margin-right: 5px;">
+                <input class="selectLogin" name="apellido2" id="name" type="text" placeholder = '2do Apellido'required [(ngModel)]="users.segundoApellido" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            </div>
+
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="email" id="name" type="email" placeholder="Email (ejemplo123@gmail.com)" required [(ngModel)]="users.email" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            </div>
+            
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="contrasena" id="name" type="password" placeholder = 'Contraseña' required [(ngModel)]="users.password" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+
+            </div>
+            
+            <div style="margin-right: 5px; margin-top: -5px;">
+                <input class="selectLogin" name="numero" id="name" type="text" maxlength="10" placeholder="Numero Telefonico (Max 10)" required [(ngModel)]="users.numero" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+            </div>
+
+            <div style="margin-right: 5px;">
+                <div style="margin-right: 5px;">
+                    <select class="selectLogin" required [(ngModel)]="users.rol" (ngModelChange)="onRoleChange($event)" name="rol" id="rol" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" selected disabled>Selecciona El Rol</option>
+                        <option *ngFor="let rol of rolesList" [ngValue]="rol.nombreRol">
+                            {{ rol.nombreRol }}
+                        </option>
+                    
+                    </select>
+                </div>
+            </div>
+
+            <div *ngIf="users.rol === 'Medico'" style="margin-right: 5px;">
+                <div style="margin-right: 5px;">
+                    <select class="selectLogin" required [(ngModel)]="users.especialidad" name="especialidad" id="especialidad" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" selected disabled>Selecciona La Especialidad</option>
+                        <option *ngFor="let especialidad of especialidadesList" [ngValue]="especialidad.nombre">{{ especialidad.nombre }}</option>
+                    </select>
+                </div>
+            </div>
+            
+            
+            
+            <div style="margin-right: 5px;">
+                <div style="margin-right: 5px;">
+                    <select class="selectLogin" required [(ngModel)]="users.sede" name="sede" id="sede" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        <option value="" selected disabled>Selecciona La Sede</option>
+                        <option *ngFor="let sede of sedesList" [ngValue]="sede.nombreSede">{{ sede.nombreSede }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!usersForm.form.valid && isFormSubmitted">Registrarse</button>
+            </div>
+    </form>
+    
+</div>

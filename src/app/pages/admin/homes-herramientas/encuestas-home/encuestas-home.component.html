@@ -1,0 +1,193 @@
+<style>
+    .custom-table {
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .thead-blue {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .field-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #333;
+        font-size: 20px; /* Ajustar el tamaño del título */
+    }
+
+    .value-indicator-container {
+        margin-bottom: 20px;
+    }
+
+    .value-indicator {
+        width: 100%;
+        height: 38px; /* Ajustar la altura de la barra */
+        background-color: #e8e8e8;
+        margin-top: 10px; /* Ajustar el margen superior de la barra */
+        position: relative;
+        border-radius: 25px; /* Ajustar el radio de la esquina */
+        overflow: hidden;
+    }
+
+    .value-indicator-fill {
+        height: 100%;
+        background-color: #007bff;
+        border-radius: 25px;
+        transition: width 0.5s ease-in-out; /* Agregar una transición suave */
+    }
+
+    .value-info {
+        font-size: 16px; /* Ajustar el tamaño del texto */
+        text-align: center;
+        font-weight: 600;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+        color: #ffffff;
+        padding: 0 20px; /* Ajustar el relleno */
+    }
+
+
+
+    .opinion-container {
+        margin-top: 20px;
+    }
+
+    .opinion-field {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin: 1%;
+    }
+
+    .opinion-field h4 {
+        margin-bottom: 10px;
+    }
+
+    .opinion-field p {
+        margin-bottom: 5px;
+    }
+
+    .opinion {
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-top: 10px;
+    }
+</style>
+
+<div>
+    <a href="/herramientas">
+        <div class="container">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+
+<div class="our_department_area" style="margin-top: -50px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-55">
+                    <h3>Encuestas de Satisfacción</h3>
+                    <p>Analiza las encuestas de satisfacción de los pacientes en esta sección. <br>
+                        Visualiza los datos recopilados en forma de gráficos para obtener <br>
+                        una mejor comprensión de la retroalimentación de los pacientes sobre los servicios médicos.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="value-indicator-container">
+                    <h4 class="field-title">Calificación</h4>
+                    <ng-container *ngFor="let tipo of tipos">
+                        <div class="value-indicator">
+                            <div class="value-indicator-fill" [style.width.%]="getBarWidth(calificacionCount[tipo])">
+                                <span class="value-info">{{ tipo }}: {{ calificacionCount[tipo] || 0 }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="value-indicator-container">
+                    <h4 class="field-title">Facilidad</h4>
+                    <ng-container *ngFor="let tipo of tipos">
+                        <div class="value-indicator">
+                            <div class="value-indicator-fill" [style.width.%]="getBarWidth(facilidadCount[tipo])">
+                                <span class="value-info">{{ tipo }}: {{ facilidadCount[tipo] || 0 }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="value-indicator-container">
+                    <h4 class="field-title">Seguridad</h4>
+                    <ng-container *ngFor="let tipo of tipos">
+                        <div class="value-indicator">
+                            <div class="value-indicator-fill" [style.width.%]="getBarWidth(seguridadCount[tipo])">
+                                <span class="value-info">{{ tipo }}: {{ seguridadCount[tipo] || 0 }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="value-indicator-container">
+                    <h4 class="field-title">Velocidad</h4>
+                    <ng-container *ngFor="let tipo of tipos">
+                        <div class="value-indicator">
+                            <div class="value-indicator-fill" [style.width.%]="getBarWidth(velocidadCount[tipo])">
+                                <span class="value-info">{{ tipo }}: {{ velocidadCount[tipo] || 0 }}</span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+        <br><br><br><br>
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section_title text-center mb-55">
+                    <h4>Opiniones De Los Usuarios</h4>
+                    <p>Explora las opiniones de nuestros clientes en esta sección. <br>
+                        Descubre lo que dicen sobre su experiencia con nuestros <br>
+                        servicios y cómo podemos mejorar.</p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="filtroDocumento"
+                    style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar
+                    Por Documento</label> <br>
+                <input placeholder="Documento o Nombre Del Medico" type="text" class="form-control"
+                    [(ngModel)]="filtroDocumento" name="filtroDocumento"
+                    style="margin-left: 10%; margin-right: 10%; width: 80%;">
+            </div>
+            <br>
+            <div style="padding: 0.5px; background-color: #62626285; width: 95%; margin: 0 auto;"></div>
+
+            <div class="opinion-container">
+                <div class="row">
+                    <div class="opinion-field" style="width: 48%;" *ngFor="let encuesta of filtrarEncuestas(encuestas)">
+                        <h4>{{ encuesta.documento }}</h4>
+                        <p>Email: {{ encuesta.email }}</p>
+                        <p>Rol: {{ encuesta.rol }}</p>
+                        <p class="opinion">Opinión: {{ encuesta.opinion }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

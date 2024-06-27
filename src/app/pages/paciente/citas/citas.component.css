@@ -1,0 +1,365 @@
+.container {
+    width: 50%;
+    margin: auto;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input[type="date"],
+  input[type="time"],
+  select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  .boxed-btn {
+    background: #fff;
+    color: #131313;
+    display: inline-block;
+    padding: 18px 44px;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    border: 0;
+    border: 1px solid #009DFF;
+    letter-spacing: 3px;
+    text-align: center;
+    color: #009DFF !important;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .boxed-btn:hover {
+    background: #009DFF;
+    color: #fff !important;
+    border: 1px solid #009DFF;
+  }
+  
+  .boxed-btn:focus {
+    outline: none;
+  }
+  
+  .boxed-btn.large-width {
+    width: 220px;
+  }
+
+
+  .body{
+    margin: 0;
+}
+ /* Estilos básicos para el menú */
+ .sidenav {
+  width: 13%; /* Ancho del menú lateral */
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #4077dd;
+  padding-top: 20px;
+  height: 100%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-weight: 600;
+}
+
+.sidenav a {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 18px;
+  color: #ffffff;
+  display: block;
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  margin-bottom: 40px; /* Separación entre botones */
+  position: relative; /* Añadido */
+  padding-left: 40px; /* Añadido para hacer espacio para el icono */
+}
+
+.sidenav a span {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sidenav a:hover {
+  background-color: #314d83;
+  color: white;
+}
+
+.titulo {
+  text-align: center;
+  margin-bottom: 20px; /* Para bajar el título */
+  font-family: Arial, sans-serif; /* Cambiar la tipografía */
+  margin: 1%;
+}
+
+.titulo h1 {
+  font-size: 50px; /* Cambiar el tamaño del título si es necesario */
+  font-weight: bold; /* Otras propiedades de fuente si es necesario */
+}
+
+.main {
+  width: 40%;
+  height: 40%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+  border: 2px solid #4077dd;
+}
+
+.main h2, p {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.info {
+  width: 40%;
+  height: 40%;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 100px rgba(0, 0, 0, 0.1);
+  border: 2px solid #4077dd;
+}
+
+.info p {
+  color: #333333;
+  text-decoration: none;
+  font-weight: 600;
+  text-align: center;
+}
+
+.menuderecha {
+  position: absolute;
+  top: 10px; /* Ajusta la distancia desde la parte superior según tu diseño */
+  right: 10px; /* Ajusta la distancia desde la derecha según tu diseño */
+  background-color: #ffffff; /* Color de fondo del cuadro */
+  padding: 20px; /* Espacio interior del cuadro */
+  border: 2px solid #4077dd; /* Borde del cuadro */
+  border-radius: 5px; /* Borde redondeado */
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: large;
+  height: 98vh;
+  text-align: center;
+  width: 18%; /* Ajusta el ancho del div según tu diseño */
+  float: right; /* Alinea el div a la derecha */
+  overflow: auto;
+  position: fixed;
+}
+.logo1 {
+width: 200px; /* Ajusta este valor al tamaño deseado */
+height: auto; /* Mantiene la proporción original de la imagen */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Estilos para la ventana emergente */
+.modal {
+  display: none; /* Oculta la ventana emergente por defecto */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+.encuesta-satisfaccion {
+  position: fixed;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%);
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  max-width: 500px;
+  width: 90%;
+  
+}
+
+.encuesta-satisfaccion h3 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.encuesta-satisfaccion label {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.encuesta-satisfaccion select,
+.encuesta-satisfaccion textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+
+
+.boxed-btn-salir {
+  background: #fff;
+  color: #b21f2d;
+  display: inline-block;
+  padding: 18px 44px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border: 0;
+  border: 1px solid #b21f2d;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #b21f2d !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.boxed-btn-salir:hover {
+  background: #b21f2d;
+  color: #fff !important;
+  border: 1px solid #b21f2d;
+}
+
+.cerrar-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333; /* Color del icono de cerrar */
+}
+
+
+.overlay-medico {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro con transparencia */
+  z-index: 999; /* Asegura que esté por encima de otros elementos */
+}
+
+
+input[type="radio"]:checked + img {
+  border: 2px solid #1a1a1a; 
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-radius: 5px;
+}
+
+
+.bar-chart {
+  display: flex;
+  flex-direction: row;
+}
+
+.barEncuestas {
+  background-color: #007bff; /* Color de la barra */
+  color: white;
+  margin: 0 5px; /* Margen entre barras */
+  text-align: center;
+  padding: 10px 0; /* Espacio interno en la barra */
+  flex-grow: 1; /* Permitir que las barras crezcan para llenar el espacio disponible */
+}
+
+.boxed-btn {
+  background: #fff;
+  color: #131313;
+  display: inline-block;
+  padding: 18px 44px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  border: 0;
+  border: 1px solid #009DFF;
+  letter-spacing: 3px;
+  text-align: center;
+  color: #009DFF !important;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.boxed-btn:hover {
+  background: #009DFF;
+  color: #fff !important;
+  border: 1px solid #009DFF;
+}
+
+.boxed-btn:focus {
+  outline: none;
+}
+
+.boxed-btn.large-width {
+  width: 220px;
+}

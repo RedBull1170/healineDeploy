@@ -1,0 +1,52 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <br><br><br>
+        <!-- Agrega un campo de filtro -->
+        <div class="form-group">
+          <label for="filtroCorreo">Filtrar por Correo</label>
+          <input type="text" class="form-control" [(ngModel)]="filtroCorreo" name="filtroCorreo">
+        </div>
+        <div class="form-group">
+          <label for="filtroEstado">Filtrar por Estado</label>
+          <input type="text" class="form-control" [(ngModel)]="filtroEstado" name="filtroEstado">
+        </div>
+        
+  
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>TIPO</th>
+                <th>DESCRIPCION</th>
+                <th>EMAIL</th>
+                <th>TELEFONO</th>
+                <th>DOCUMENTO</th>
+                <th>ESTADO</th>
+                <th>ACCIONES</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let pqrs of filtrarPqrs(pqrs | async) || []">
+                <td>{{ pqrs.id_pqrs }}</td>
+                <td>{{ pqrs.tipo }}</td>
+                <td>{{ pqrs.descripcion }}</td>
+                <td>{{ pqrs.email }}</td>
+                <td>{{ pqrs.telefono }}</td>
+                <td>{{ pqrs.documento }}</td>
+                <td>{{ pqrs.estado }}</td>
+  
+                <td>
+                  <a [routerLink]="['/pqrs-editar/editar/', pqrs.id_pqrs]" class="btn btn-primary">Editar</a>ㅤ
+                  <a (click)="borrarPqrs(pqrs.id_pqrs)" class="btn btn-danger" style="color: #fff;">Borrar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br><br><br>
+  

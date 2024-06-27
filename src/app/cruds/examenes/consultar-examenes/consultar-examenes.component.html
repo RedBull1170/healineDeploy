@@ -1,0 +1,58 @@
+<br><div>
+    <a href="/examenes-home">
+        <div class="container">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+
+<div>
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;" >Consultar <br>Examen Medico</h1>
+</div>
+<div class="row no-gutters">
+    <div class="col-xl-6" style="background-color: #feffff;margin-top: 40px; ">
+        <div style="margin-top: -90px;">
+            <div>
+                <div>
+                    <form class="formCitaBuscar">
+                        <h1>ㅤ</h1>
+                        <div class="form-group">
+                            <label class="labelCitaBuscar" for="filtroPaciente" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Paciente</label>
+                            <input placeholder="ID o Nombre del Paciente" type="text" class="form-control" [(ngModel)]="filtroPaciente" name="filtroPaciente" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                        </div>
+                        <h1>ㅤ</h1>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-6" style="background-color: rgb(255, 255, 255);">
+        <div>
+            <table class="table table-striped table-responsive" style="width: 80%; margin: 0 auto; border-collapse: separate; border-spacing: 0; margin-top: 50px;">
+                <thead >
+                    <tr>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff; border-top-left-radius: 10px;">ID</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff;">Cita</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff;">Paciente</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff;">Nombre Del Examen</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff;">Resultado del Examen</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff;">Fecha del Examen</th>
+                        <th style="text-align: center; background-color: #009DFF; color: #fff; border-top-right-radius: 10px;">Estado Del Examen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let examen of filtrarExamenes(examenes) || []; let i = index" [class.odd]="i % 2 !== 0">
+                        <td style="padding: 8px; text-align: center;">{{ examen.id }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.cita }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.paciente }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.nombre }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.resultado }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.fecha }}</td>
+                        <td style="padding: 8px; text-align: center;">{{ examen.estado }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

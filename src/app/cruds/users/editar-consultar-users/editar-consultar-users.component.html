@@ -1,0 +1,79 @@
+<br>
+    <div>
+        <a href="/usuarios-home">
+            <div class="container">
+                <button class="boton-admin">↺ Atrás</button>
+            </div>
+        </a>          
+    </div>
+    <div >
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;" >Editar Usuario</h1>
+    </div>
+    
+<br><br>
+    
+    
+<br><br>
+
+<div style="margin: 10px;">
+    <div style="background-color: rgb(255, 255, 255);">
+        <div style="display: flex; flex-direction: column; text-align: center;">
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="filtroCorreo" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Correo</label> <br> 
+                <input placeholder="Email (ejemplo123@gmail.com)" type="text" class="form-control" [(ngModel)]="filtroCorreo" name="filtroCorreo" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+            </div>
+            <!-- Agrega este bloque de código donde desees que aparezca el filtro de documento -->
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="filtroDocumento" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Documento</label>
+                <input placeholder="Documento" type="number" class="form-control" [(ngModel)]="filtroDocumento" name="filtroDocumento" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+            </div>
+            <div class="form-group">
+                <label class="labelCitaBuscar" for="filtroNombre" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Nombre</label> <br> 
+                <input placeholder="Nombre completo" type="text" class="form-control" [(ngModel)]="filtroNombre" name="filtroNombre" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped" style="width: 100%; margin-top: 20px;font-weight: 600;">
+            <thead>
+                <tr>
+                    <th class="bg-primary text-white" style="border-radius: 15px 0 0 0; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Documento</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Primer Nombre</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Primer Apellido</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Correo</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Numero</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Status</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Rol</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Sede</th>
+                    <th class="bg-primary text-white" style="padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Especialidad</th>
+                    <th class="bg-primary text-white" style="border: 1px solid #ccc; border-radius: 0px 25px 0px 0px; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of filtrarUsers(users | async) || []; let i = index" [class.odd]="i % 2 !== 0">
+                    <td>{{ user.documento }}</td>
+                    <td>{{ user.primerNombre }}</td>
+                    <td>{{ user.primerApellido }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.numero }}</td>
+                    <td>{{ user.status }}</td>
+                    <td>{{ user.rol }}</td>
+                    <td>{{ user.especialidad }}</td>
+
+                    <td>{{ user.sede }}</td>
+                    <td class="text-center" >
+                        <a [routerLink]="['/editar-users/editar/', user.documento]">
+                            <img src='../../../../assets/images/editar.png' alt='Editar usuario' style='width: 19px; height: 19px;'>
+                        </a>ㅤ
+                        <a (click)="borrarUsers(user.documento.toString())" style="color: #fff;">
+                            <img src='../../../../assets/images/eliminar.png' alt='Eliminar usuario' style='width: 19px; height: 19px;'>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br><br>
+<br><br>
+<br><br>

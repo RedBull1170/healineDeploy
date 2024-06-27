@@ -1,0 +1,11 @@
+<div class="encuesta-satisfaccion" *ngIf="mostrarEncuesta">
+    <!-- Aquí va tu formulario de encuesta -->
+    <!-- Por ejemplo -->
+    <h3>Encuesta de satisfacción</h3>
+    <form (ngSubmit)="enviarEncuesta()">
+        <!-- Campos de la encuesta -->
+        <!-- Por ejemplo -->
+        <textarea placeholder="Déjanos tus comentarios"></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</div>

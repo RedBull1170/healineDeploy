@@ -1,0 +1,565 @@
+<style>
+    /* Estilos generales de la tabla */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #0063cc68; /* Color cambiado */
+    color: #fff;
+    border-top: 1px solid #ddd;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Estilo para las filas impares */
+tr.odd {
+    background-color: #f9f9f9;
+}
+
+/* Estilo para el mensaje cuando no hay elementos */
+.empty-message {
+    margin-top: 10px;
+    color: #999;
+}
+
+/* Estilos mejorados para los títulos */
+h2 {
+    font-size: 24px;
+    color: #2c91d5;
+    margin-bottom: 15px;
+}
+
+</style>
+<body>
+    <div class="containerMedico">
+
+        <div class="sidebar close" style="width: 6%;">
+            <ul class="nav-list" >
+                <li><br>
+                    <a href="/medico-home-2">
+                        <img class="imageMedico" src="../../../../assets/images/homeMedico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-home-2" class="link-name">Home</a></li>
+                    </ul>
+                </li>
+                <div>
+                    <h3 style="color: #fff; margin-top: -15px; text-align: center;">___</h3>
+                </div>
+                <li><br>
+                    <a href="/medico-citas">
+                        <img class="imageMedico" src="../../../../assets/images/citas-medico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-citas" class="link-name">Citas</a></li>
+                    </ul>
+                </li>
+                <div>
+                    <h3 style="color: #fff; margin-top: -15px; text-align: center;">___</h3>
+                </div>
+                <li><br>
+                    <a href="/medico-pacientes">
+                        <img class="imageMedico" src="../../../../assets/images/users-medico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+    
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-pacientes" class="link-name">Pacientes</a></li>
+                    </ul>
+                </li>
+                <div>
+                    <h3 style="color: #fff; margin-top: -15px; text-align: center;">___</h3>
+                </div>
+                <li><br>
+                    <a href="/medico-agenda">
+                        <img class="imageMedico" src="../../../../assets/images/agenda-medico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-agenda" class="link-name">Agenda</a></li>
+                    </ul>
+                </li>
+                <div>
+                    <h3 style="color: #fff; margin-top: -15px; text-align: center;">___</h3>
+                </div>
+                <li><br>
+                    <a href="/medico-examenes">
+                        <img class="imageMedico" src="../../../../assets/images/examenes-medico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-examenes" class="link-name">Examenes</a></li>
+                    </ul>
+                </li>
+                <div>
+                    <h3 style="color: #fff; margin-top: -15px; text-align: center;">___</h3>
+                </div>
+                <li><br>
+                    <a href="/medico-ordenes">
+                        <img class="imageMedico" src="../../../../assets/images/ordenes-medico.png" alt="" style="width: 45px; text-align: center; margin-left: 29%;">
+                    </a><br>
+    
+                    <ul class="sub-menu blank">
+                        <li><a href="/medico-ordenes" class="link-name">Ordenes</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="overlay-medico" *ngIf="mostrarEncuesta" (click)="mostrarEncuesta = false">
+        </div>
+        
+    
+        <div class="contentMedico" style="display: flex; flex-direction: column; align-items: center;">
+            <div style="display: flex; justify-content: flex-end; width: 100%;">
+                <a (click)="mostrarEncuesta = true">
+                    <button class="button button-contactForm boxed-btn5" style="padding: 7px 20px; font-size: 12px;">Cerrar Sesión</button>
+                </a>
+            </div>
+            
+            <div class="encuesta-satisfaccion" *ngIf="mostrarEncuesta">
+                <button class="cerrar-btn" (click)="mostrarEncuesta = false">&#10006;</button>
+                <h3 style="text-align: center; font-size: 24px; margin-bottom: 20px; font-weight: 600; color: #181818;">Encuesta de Satisfacción</h3>
+                <form #encuestasForm="ngForm" (ngSubmit)="onSubmit()" style="max-width: 500px; margin: 0 auto; background-color: #f9f9f9; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);max-height: 400px; overflow-y: auto;  ">
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">Calificación del Aplicativo:</label>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label>
+                                <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Excelente" style="display: none;">
+                                <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                            </label>
+                            <label>
+                                <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Muy Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                            </label>
+                            <label>
+                                <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                            </label>
+                            <label>
+                                <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Regular" style="display: none;">
+                                <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                            </label>
+                            <label>
+                                <input type="radio" name="calificacion" [(ngModel)]="encuestas.calificacion" value="Deficiente" style="display: none;">
+                                <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                            </label>
+                        </div>      
+                    </div>
+    
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Qué tan fácil de usar encuentra el aplicativo?</label>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Excelente" style="display: none;">
+                                <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Muy Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Regular" style="display: none;">
+                                <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="facilidad" [(ngModel)]="encuestas.facilidad" value="Deficiente" style="display: none;">
+                                <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                            </label>
+                        </div>
+                    </div>
+                    
+    
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Qué tan seguro se siente con respecto a la privacidad de sus datos?</label>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Excelente" style="display: none;">
+                                <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Muy Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Regular" style="display: none;">
+                                <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="seguridad" [(ngModel)]="encuestas.seguridad" value="Deficiente" style="display: none;">
+                                <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label style="font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block;">¿Cómo calificaría la velocidad y el rendimiento general?</label>
+                        <div style="display: flex; justify-content: space-between;">
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Excelente" style="display: none;">
+                                <img src="../../../../assets/images/Excelente.png" width="75px" alt="Excelente">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Muy Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Muy_Bueno.png" width="75px" alt="Muy Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Bueno" style="display: none;">
+                                <img src="../../../../assets/images/Bueno.png" width="75px" alt="Bueno">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Regular" style="display: none;">
+                                <img src="../../../../assets/images/Regular.png" width="75px" alt="Regular">
+                            </label>
+                            <label style="cursor: pointer;">
+                                <input type="radio" name="velocidad" [(ngModel)]="encuestas.velocidad" value="Deficiente" style="display: none;">
+                                <img src="../../../../assets/images/Deficiente.png" width="75px" alt="Deficiente">
+                            </label>
+                        </div>
+                    </div>
+                    
+                    
+                    <div style="margin-bottom: 20px;">
+                        <label for="opinion" style="font-weight: bold; font-size: 18px;">Comentarios u Opiniones:</label>
+                        <textarea class="selectLogin" name="opinion" id="opinion" rows="5" placeholder="Comentarios u Opiniones" required [(ngModel)]="encuestas.opinion" style="width: 100%; padding: 10px; border-radius: 5px;"></textarea>
+                    </div>
+    
+                    <button type="button" class="button button-contactForm boxed-btn-salir col-xl-4" style="border-radius: 20px; width: 100%;" (click)="salir()">Salir</button>ㅤ
+                    <button type="submit" class="button button-contactForm boxed-btn col-xl-7" style="border-radius: 20px; width: 100%;">Enviar</button>
+                </form>
+            </div> 
+        
+            <div class="container mt-5 text-center">
+                <div class="welcomeTitle">
+                    <h1>¡¡Hola {{ userInfo.primerNombre }}!!</h1>
+                    <p>Consulta Y Administra Los Pacientes</p>
+                </div>
+                <div class="our_department_area" style="margin-top: -100px;">
+                    <div class="container-fluid">
+                        <div class="row justify-content-center"> 
+                            <div class="col-xl-4 col-md-6 col-lg-4">
+                                <div class="single_department">
+                                    <div class="department_thumb" style="width: 55%; margin-left: auto; margin-right: auto;"> <!-- Elimina el margen izquierdo y derecho y utiliza auto para centrar -->
+                                        <a href="/registrar-incapacidades-medico"><img src="../../../../assets/images/registrar-incapacidad-medico.png" alt=""></a>
+                                    </div>
+                                    <div class="department_content text-center"> <!-- Agrega text-center para centrar el contenido -->
+                                        <h3><a href="/registrar-incapacidades-medico" style="font-weight: 600; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Registrar Incapacidad</a></h3> <!-- Elimina el margen izquierdo -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="filtroCorreo" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Correo</label> <br> 
+                    <input placeholder="Email (ejemplo123@gmail.com)" type="text" class="form-control" [(ngModel)]="filtroCorreo" name="filtroCorreo" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                </div>
+                <!-- Agrega este bloque de código donde desees que aparezca el filtro de documento -->
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="filtroDocumento" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Documento</label>
+                    <input placeholder="Documento" type="text" class="form-control" [(ngModel)]="filtroDocumento" name="filtroDocumento" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                </div>
+                <div class="form-group">
+                    <label class="labelCitaBuscar" for="filtroNombre" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;margin-left: 10%; margin-right: 10%;">Filtrar Por Nombre</label> <br> 
+                    <input placeholder="Nombre completo" type="text" class="form-control" [(ngModel)]="filtroNombre" name="filtroNombre" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                </div>
+            
+                <br><br>
+
+                <div class="row justify-content-center">
+                    <ng-container *ngFor="let user of filtrarUsers(users | async) || []; let i = index">
+                        <div class="col-md-3 mb-4">
+                            <div class="card shadow rounded" style="border: 2px solid #0063cc68;">
+                                <div class="card-header text-white text-center" style="background-color: #0063cc68; font-weight: 600; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">
+                                    <h5 class="m-0">{{ user.primerNombre }} {{ user.primerApellido }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <!-- Información básica -->
+                                        <li class="list-group-item"><strong>Documento:</strong> <span class="text-muted">{{ user.documento }}</span></li>
+                                        <li class="list-group-item"><strong>Correo:</strong> <span class="text-muted">{{ user.email }}</span></li>
+                                        <li class="list-group-item"><strong>Número:</strong> <span class="text-muted">{{ user.numero }}</span></li>
+                                        <li class="list-group-item"><strong>Status:</strong> <span class="text-muted">{{ user.status }}</span></li>
+                                        <li class="list-group-item"><strong>Sede:</strong> <span class="text-muted">{{ user.sede }}</span></li>
+                                        <!-- Botón para mostrar más información -->
+                                        <li class="list-group-item">
+                                            <button class="button button-contactForm boxed-btn5" style="padding: 8px; font-weight: 600;" (click)="mostrarDetalles(user)">Mas información</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                    
+                  </div>
+                  
+                  <!-- Panel lateral derecho para mostrar información adicional -->
+                  <div class="row justify-content-center" >
+                    <a style="cursor: pointer; text-align: left;" (click)="imprimirTabla()"><img src="../../../../../assets/images/imprimir.png" width="35px" alt=""></a><br>
+                    <div class="col-md-12 mb-4" *ngIf="userInfo" id="tabla-imprimir">
+                      <div class="card shadow rounded" style="border: 2px solid #0063cc68;">
+                        <div class="card-body">
+                          <h3 class="card-title">Información adicional del usuario</h3>
+                          <hr>
+
+                          <ng-container *ngIf="user">
+                            <div class="card shadow rounded" style="border: 2px solid #0063cc68;">
+                                <div class="card-body">
+                                    <h3 class="card-title">Detalles del usuario</h3>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <strong>Primer Nombre:</strong>
+                                                    <span class="text-muted">{{ user.primerNombre }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Segundo Nombre:</strong>
+                                                    <span class="text-muted">{{ user.segundoNombre }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Primer Apellido:</strong>
+                                                    <span class="text-muted">{{ user.primerApellido }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Segundo Apellido:</strong>
+                                                    <span class="text-muted">{{ user.segundoApellido }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Documento:</strong>
+                                                    <span class="text-muted">{{ user.documento }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <strong>Tipo De Documento:</strong>
+                                                    <span class="text-muted">{{ user.tipoDoc }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Correo:</strong>
+                                                    <span class="text-muted">{{ user.email }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Número:</strong>
+                                                    <span class="text-muted">{{ user.numero }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Status:</strong>
+                                                    <span class="text-muted">{{ user.status }}</span>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <strong>Sede:</strong>
+                                                    <span class="text-muted">{{ user.sede }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ng-container>
+                        <br><br>                        
+                          <div class="row">
+                            <div class="col-xl-6">
+                                <h2>Lista de exámenes</h2>
+                                <div *ngIf="examenesFiltrados.length > 0" class="overflow-auto" style="max-height: 300px;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Info del Paciente</th>
+                                                <th>Nombre del Examen</th>
+                                                <th>Resultado</th>
+                                                <th>Fecha</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let examen of examenesFiltrados">
+                                                <td>{{ examen.paciente }}</td>
+                                                <td>{{ examen.nombre }}</td>
+                                                <td>{{ examen.resultado }}</td>
+                                                <td>{{ examen.fecha }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div *ngIf="examenesFiltrados.length === 0">
+                                    <p>No hay exámenes presentados hasta el momento.</p>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <h2>Lista de incapacidades</h2>
+                                <div *ngIf="incapacidadesFiltradas.length > 0" class="overflow-auto" style="max-height: 300px;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Paciente</th>
+                                                <th>Médico</th>
+                                                <th>Fecha</th>
+                                                <th>Tipo</th>
+                                                <th>Detalles</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let incapacidad of incapacidadesFiltradas">
+                                                <td>{{ incapacidad.paciente }}</td>
+                                                <td>{{ incapacidad.medico }}</td>
+                                                <td>{{ incapacidad.fecha }}</td>
+                                                <td>{{ incapacidad.tipo }}</td>
+                                                <td>{{ incapacidad.detalles }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div *ngIf="incapacidadesFiltradas.length === 0">
+                                    <p>No hay incapacidades presentadas hasta el momento.</p>
+                                </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                            <div class="col-xl-6">
+                                <h2>Lista de órdenes</h2>
+                                <div *ngIf="ordenesFiltradas.length > 0" class="overflow-auto" style="max-height: 300px;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Paciente</th>
+                                                <th>Fórmula</th>
+                                                <th>Diagnóstico</th>
+                                                <th>Tratamiento</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let orden of ordenesFiltradas">
+                                                <td>{{ orden.paciente }}</td>
+                                                <td>{{ orden.formula }}</td>
+                                                <td>{{ orden.diagnostico }}</td>
+                                                <td>{{ orden.tratamiento }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div *ngIf="ordenesFiltradas.length === 0">
+                                    <p>No hay órdenes presentadas hasta el momento.</p>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-6">
+                                <h2>Lista de citas</h2>
+                                <div *ngIf="citasFiltradas.length > 0" class="overflow-auto" style="max-height: 300px;">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Fecha</th>
+                                                <th>Hora</th>
+                                                <th>Paciente</th>
+                                                <th>Médico</th>
+                                                <th>Especialidad</th>
+                                                <th>Facturación</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let cita of citasFiltradas">
+                                                <td>{{ cita.fecha }}</td>
+                                                <td>{{ cita.hora }}</td>
+                                                <td>{{ cita.paciente }}</td>
+                                                <td>{{ cita.medico }}</td>
+                                                <td>{{ cita.especialidad }}</td>
+                                                <td>{{ cita.facturacion }}</td>
+                                                <td>{{ cita.estado }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div *ngIf="citasFiltradas.length === 0">
+                                    <p>No hay citas presentadas hasta el momento.</p>
+                                </div>
+                            </div>                          
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div><br>
+            </div>
+        </div>
+        
+        
+        
+        
+        
+        
+
+        <div class="infoMedico">    
+            <div class="clockMedico" style="overflow: auto;">
+            <div class="clockWrapper" style="text-align: center; margin: 10px;">
+                <div class="digit">{{ hour }}</div>
+                <div class="colon">:</div>
+                <div class="digit">{{ minute }}</div>
+                <div class="colon">:</div>
+                <div class="digit">{{ second }}s</div>
+            </div>
+            </div><br>
+            <div class="infoMedicoContent" style="text-align: left;">
+                <p style="font-weight: 600;">Información del Médico:</p>
+                <p>{{ userInfo.primerNombre }} {{ userInfo.segundoNombre }}</p>
+                <p>{{ userInfo.primerApellido }} {{ userInfo.segundoApellido }}</p>
+                <p>{{ userInfo.email }}</p>
+                <p>{{ userInfo.especialidad }}</p>
+                <a style="text-decoration: none;" [routerLink]="['/editar-perfil/editar/', userInfo.documento]"><div class="editar-perfil">
+                    <span>Perfil</span>
+                </div></a>
+            </div>
+            
+            
+            <br>
+            <div class="additional-infoMedico" style="overflow: auto;">
+                <div class="iframeMedico">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.041526618038!2d-122.14301908582862!3d37.42257507979185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085806a58f70c27%3A0xd1a9227a8f5f693f!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1646208913084!5m2!1sen!2sus" width="300" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div><br><br>
+                <div class="media-body">
+                    <h5>Colombia - Bogotá</h5>
+                    <p>{{ userInfo.sede }}</p>
+                </div><br>
+                <div class="media-body">
+                    <h5>{{ userInfo.numero }}</h5>
+                    <p>De Lunes A Domingo De 6am A 11pm</p>
+                </div><br>
+                <div class="media-body">
+                    <h5>NovaEPS@gmail.com</h5>
+                    <p>Envíenos su consulta en cualquier momento!</p>
+                </div>      
+            </div>
+            
+        </div>
+    </div>
+
+  </body>

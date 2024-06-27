@@ -1,0 +1,51 @@
+<br><div>
+    <a href="/roles-home">
+        <div class="container">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+
+<div>
+    <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;">Consultar Roles</h1>
+</div>
+
+<div style="background-color: #feffff; border-radius: 10px;">
+    <div>
+        <div>
+            <form class="formSedeBuscar">
+                <h1>ㅤ</h1>
+
+                <div class="form-group">
+                    <label class="labelSedeBuscar" for="filtroNombreRol" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; margin-left: 10%; margin-right: 10%;">Filtrar Por Nombre de Rol</label>
+                    <input placeholder="Nombre de Rol" type="text" class="form-control" [(ngModel)]="filtroNombreRol" name="filtroNombreRol" style="margin-left: 10%; margin-right: 10%; width: 80%;">
+                </div>
+
+                <h1>ㅤ</h1>
+            </form>
+        </div>
+    </div>
+</div>  
+
+<div >
+    <div class="row no-gutters" style=" margin: 5%; margin-top: -50px;">
+        <div>
+            <div class="table-responsive" >
+                <table class="table table-striped" style="width: 100%; margin-top: 20px; font-weight: 600;">
+                    <thead>
+                        <tr>
+                            <th class="bg-primary text-white" style="border-radius: 15px 0 0 0; padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">ID</th>
+                            <th class="bg-primary text-white" style="border-radius: 0 15px 0 0;padding: 12px; color: #fff; font-family: 'Arial', sans-serif;">Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rol of filtrarRoles(roles) || []; let i = index" [class.odd]="i % 2 !== 0">
+                            <td>{{ rol.id }}</td>
+                            <td>{{ rol.nombreRol }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="container mt-4">
+    <a href="/pacientes-consultar" >
+        <button class="boxed-btn" style="padding: 10px; font-weight: 600; text-decoration: none;">↺ Atrás</button>
+    </a>
+</div>
+
+<div class="container mt-4">
+    <div class="blue-box">
+
+        <form #usersForm="ngForm" (ngSubmit)="onSubmit()" class="form-editar-usuario">
+            <div class="form-container">
+                <div class="form-group">
+                    <label for="documento">Documento (Max 10)</label>
+                    <input class="form-control" name="documento" id="documento" type="text" maxlength="10" placeholder="Documento (Max 10)" required [(ngModel)]="users.documento">
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_documento">Selecciona Tipo De Documento</label>
+                    <select class="form-control" required [(ngModel)]="users.tipoDoc" name="tipo" id="tipo_documento">
+                        <option value="" selected disabled>Selecciona Tipo De Documento</option>
+                        <option value="CC">CC</option>
+                        <option value="TI">TI</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                        <option value="NIT">NIT</option>
+                    </select>
+                </div>
+
+                <!-- Repite el siguiente bloque para cada campo del formulario -->
+                <div class="form-group">
+                    <label for="primerNombre">Primer Nombre</label>
+                    <input class="form-control" name="primerNombre" id="primerNombre" type="text" placeholder="Primer Nombre" required [(ngModel)]="users.primerNombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="segundoNombre">Segundo Nombre</label>
+                    <input class="form-control" name="segundoNombre" id="segundoNombre" type="text" placeholder="Segundo Nombre" required [(ngModel)]="users.segundoNombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input class="form-control" name="primerApellido" id="primerApellido" type="text" placeholder="Primer Apellido" required [(ngModel)]="users.primerApellido">
+                </div>
+
+                <div class="form-group">
+                    <label for="segundoApellido">Segundo Apellido</label>
+                    <input class="form-control" name="segundoApellido" id="segundoApellido" type="text" placeholder="SegundoApellido" required [(ngModel)]="users.segundoApellido">
+                </div>
+
+                <div class="form-group">
+                    <label for="email"> Correo Electronico</label>
+                    <input class="form-control" name="email" id="email" type="text" placeholder="email" required [(ngModel)]="users.email">
+                </div>
+
+                <div class="form-group">
+                    <label for="numero"> Numero Telefonico </label>
+                    <input class="form-control" name="numero" id="numero" type="text" placeholder="numero" required [(ngModel)]="users.numero">
+                </div>
+
+                <div class="form-group">
+                    <label for="sede">  Sedes </label>
+                    <input class="form-control" name="sede" id="sede" type="text" placeholder="sede" required [(ngModel)]="users.sede">
+                </div>
+
+
+
+                <!-- Repite este bloque para cada campo adicional -->
+            </div>
+
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary" [disabled]="!usersForm.form.valid && isFormSubmitted">Guardar Cambios</button>
+            </div>
+        </form>
+    </div>
+</div>
+<br>

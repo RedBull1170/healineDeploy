@@ -1,0 +1,63 @@
+<!-- registrar-agenda.component.html -->
+<div style="margin-top: 10px; margin-left: 10%;">
+    <a href="/agenda-home">
+        <button class="boton-admin2" onclick="goBack()">↺ Atrás</button>
+    </a>
+    
+</div>
+    <div >
+        <h1 class="title1" style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000;" >Registrar Agenda Medica</h1>
+    </div>
+    
+    <div style="background-color: #feffff; border-radius: 10px;">
+        <div >
+            <div>
+                <form #agendaForm="ngForm" (ngSubmit)="onSubmit()" class="formCitaBuscar">
+                    <h4>ㅤ</h4>
+
+                        <div style="margin-right: 5px;">
+                            <label class="labelCitaBuscar" for="fecha" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">
+                                Fecha de Agenda
+                            </label>
+                            <input class="selectLogin" name="fecha" id="fecha" type="date" placeholder="Fecha" required [(ngModel)]="agenda.fecha" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        </div>
+
+                        <div style="margin-right: 5px; margin-top: -5px;">
+                            <label class="labelCitaBuscar" for="horaInicio" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010; ">
+                                Hora de Inicio
+                            </label>
+                            <input class="selectLogin" name="hora_inicio" id="hora_inicio" type="time" placeholder = 'hora_inicio' required [(ngModel)]="agenda.hora_inicio" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        </div>
+
+                        <div style="margin-right: 5px; margin-top: -5px;">
+                            <label class="labelCitaBuscar" for="horaFin" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">
+                                Hora de Fin
+                            </label>
+                            <input class="selectLogin" name="hora_fin" id="hora_fin" type="time" placeholder = 'hora_fin' required [(ngModel)]="agenda.hora_fin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        </div>
+
+                        <div style="margin-right: 5px; margin-top: -5px;">
+                            <label class="labelCitaBuscar" for="medico" style="font-size: 20px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: #101010;">
+                                Médico
+                            </label>                            
+                            <select required [(ngModel)]="agenda.medico" name="medico" id="medico" class="selectLogin" class="selectLogin" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                                <option value="" disabled selected>Seleccione un médico</option>
+                                <option *ngFor="let user of usersMedicos" [ngValue]="user.documento + ' ' + user.primerNombre + ' ' + (user.segundoNombre ? user.segundoNombre + ' ' : '') + user.primerApellido + ' ' + (user.segundoApellido ? user.segundoApellido : '')">
+                                    {{ user.documento }} - {{ user.primerNombre }} {{ user.segundoNombre ? user.segundoNombre + ' ' : '' }}{{ user.primerApellido }} {{ user.segundoApellido ? user.segundoApellido : '' }}
+                                </option>
+                            </select>
+                            
+                        </div>
+                        
+
+                        <div style="margin-right: 5px;">
+                            <input class="selectLogin" name="descripcion" id="descripcion" type="text" placeholder = 'Descripcion'required [(ngModel)]="agenda.descripcion" style="display: block;margin: 0 auto;margin-bottom: 30px;padding: 8px;border-radius: 17px;width: 480px;color: rgb(14, 14, 14);background-color: rgb(255, 255, 255);padding: 12px; border: 1px solid #9e9e9e; border-radius: 15px; width: 100%; font-size: 20px;">
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn" style="border-radius: 20px;" [disabled]="!agendaForm.form.valid && isFormSubmitted">Registrar Agenda</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,37 @@
+<br><div>
+    <a href="/editar-consultar-formulas">
+        <div class="container" style="margin-left: 20%;">
+            <button class="boton-admin">↺ Atrás</button>
+        </div>
+    </a>
+</div>
+<div class="container" style="max-width: 900px; margin: 50px auto; padding: 20px; box-shadow: 0 4px 8px #000000; background-color: transparent; border-radius: 20px; margin-top: 25px;">
+    <h1 style="font-size: 45px; color: #2c91d5; padding: 5px; text-shadow: 1px 1px 2px #000000; text-align: center;">Editar Medicamento</h1>
+    <div class="orden-medica">
+        <form id="formulaMedicaForm" #formulasForm="ngForm" (ngSubmit)="onSubmit()">
+            
+            <div class="orden-info">
+                <label for="nombreMedicamento" style="font-weight: bold; margin-right: 10px; color: #000;">Nombre Medicamento:</label>
+                <input required [(ngModel)]="formulas.nombreMedicamento" type="text" id="nombreMedicamento" name="nombreMedicamento" placeholder="Nombre del Medicamento" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;">
+            </div>
+            <div class="orden-info">
+                <label for="tratamiento" style="font-weight: bold; margin-right: 10px; color: #000;">Tratamiento:</label>
+                <textarea required [(ngModel)]="formulas.tratamiento" id="tratamiento" name="tratamiento" placeholder="Descripción del Tratamiento" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;"></textarea>
+            </div>
+            <div class="orden-info">
+                <label for="diagnostico" style="font-weight: bold; margin-right: 10px; color: #000;">Diagnóstico y Justificación:</label>
+                <textarea required [(ngModel)]="formulas.diagnostico" id="diagnostico" name="diagnostico" placeholder="Descripción del diagnóstico médico y justificación" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;"></textarea>
+            </div>
+            <div class="orden-info">
+                <label for="instrucciones" style="font-weight: bold; margin-right: 10px; color: #000;">Instrucciones para el Paciente:</label>
+                <textarea required [(ngModel)]="formulas.instrucciones" id="instrucciones" name="instrucciones" placeholder="Instrucciones para el paciente" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%; font-size: 14px; margin-top: 5px;"></textarea>
+            </div>
+            
+            <div class="orden-info" style="text-align: center; margin-top: 10px;">
+                <button class="button button-contactForm boxed-btn" type="submit"  [disabled]="!formulasForm.form.valid && isFormSubmitted">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

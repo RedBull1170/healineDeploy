@@ -1,0 +1,85 @@
+<div class="color-fond">
+  <div>
+    <br>
+    <a style="margin-left: 25%;">
+        <button class="boton-admin" (click)="goBack()">↺ Atrás</button>
+    </a>
+    <a href="/index">
+      <img src="../../../../assets/images/home.png" alt="" style="width: 30px; margin-top: -15px; margin-left: 10px;">
+    </a>
+  </div>
+  <br><br><br>
+  <div class="container" id="container">
+    <div class="overlay-container" style="float: left;">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>!Bienvenido¡</h1>
+          <p style="font-weight: 500;">Inicia Sesion</p>
+          <div class="ContBoton">
+            <a style="text-decoration: none;" href="/login" class="buttonLogin3" class="botonnn2">Login</a>
+          </div>      
+        </div>
+      </div>
+    </div>
+    <div class="form-container sign-in-container scrollable-container" style="border: 1px solid #cacaca;">
+      <form (ngSubmit)="onSubmit()" #registrarForm="ngForm">
+          <h1 style="color: #777777;">Registrarse</h1>
+          <div class="social-container">
+            <a href="#" class="social">
+              <img src="../../../../assets/images/facebook.png" alt="" style="width: 100%;">
+            </a>
+            <a href="#" class="social">
+              <img src="../../../../assets/images/google.png" alt="" style="width: 100%;">
+            </a>
+            <a href="#" class="social">
+              <img src="../../../../assets/images/linkedin.png" alt="" style="width: 100%;">
+            </a>
+          </div>
+          <br>
+          <div style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input  name="Documento" id="Documento" type="number" maxlength="10" placeholder="Documento (Max 10)" required [(ngModel)]="users.documento"/>
+          </div>
+          <div style="border: 1px solid hsl(0, 0%, 80%); border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <select required [(ngModel)]="users.tipoDoc" name="tipo" id="tipo" style="padding: 10px; border: none; width: 100%; margin-top: 5px; font-size: 16px; color: #6f6f6f;">
+              <option value="" selected disabled>Selecciona Tipo De Documento</option>
+              <option value="CC">CC</option>
+              <option value="TI">TI</option>
+              <option value="Pasaporte">Pasaporte</option>
+              <option value="NIT">NIT</option>
+            </select>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="PrimerNombre" id="PrimerNombre" type="text" placeholder="1er Nombre" required [(ngModel)]="users.primerNombre"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="SegundoNombre" id="SegundoNombre" type="text" placeholder="2do Nombre" [(ngModel)]="users.segundoNombre"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="PrimerApellido" id="PrimerApellido" type="text" placeholder="1er Apellido" required [(ngModel)]="users.primerApellido"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="SegundoApellido" id="SegundoApellido" type="text" placeholder="2do Apellido" [(ngModel)]="users.segundoApellido"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="Email" id="Email" type="email" placeholder="Email" required [(ngModel)]="users.email"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="Contrasena" id="Contrasena" type="password" placeholder="Contraseña" required [(ngModel)]="users.password"/>
+          </div>
+          <div class="additional-fields" [style.display]="showAdditionalFields ? 'block' : 'none'" style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%; margin: 3px;">
+            <input name="Numero" id="Numero" type="number" maxlength="10" placeholder="Número Telefónico" required [(ngModel)]="users.numero"/>
+          </div>
+          <div>
+            <a style="cursor: pointer;" class="botonnn3" (click)="showAdditionalFields = !showAdditionalFields" [hidden]="showAdditionalFields">Ver Mas</a>
+            <a style="cursor: pointer;" class="botonnn3" (click)="showAdditionalFields = !showAdditionalFields" [hidden]="!showAdditionalFields">Ver Menos</a>
+          </div>
+          <br>
+          <h2>
+            <a class="not-cuenta" style="text-decoration: none;" href="/login">¿Ya Tienes Cuenta?</a>
+          </h2>
+          <button class="botonnn" type="submit" [disabled]="!registrarForm.form.valid && isFormSubmitted">Registrarse</button>
+        </form>
+      </div>
+    </div>
+</div>
+<br>

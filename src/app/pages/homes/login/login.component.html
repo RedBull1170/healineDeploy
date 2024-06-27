@@ -1,0 +1,60 @@
+<div>
+  <div>
+    <br>
+    <a style="margin-left: 25%;">
+        <button class="boton-admin" (click)="goBack()">↺ Atrás</button>
+    </a>
+    <a href="/index">
+      <img src="../../../../assets/images/home2.png" alt="" style="width: 30px; margin-top: -15px; margin-left: 10px;">
+    </a>
+  </div>
+  <br><br><br>
+  <div class="container" id="container">
+    
+    <div class="form-container sign-in-container" style="border: 1px solid #cacaca;">
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <h1 style="color: #777777;">Iniciar Sesión</h1>
+        <div class="social-container">
+          <a href="#" class="social">
+            <img src="../../../../assets/images/facebook.png" alt="" style="width: 100%; cursor:auto;">
+          </a>
+          <a href="#" class="social">
+            <img src="../../../../assets/images/google.png" alt="" style="width: 100%;">
+          </a>
+          <a href="#" class="social">
+            <img src="../../../../assets/images/linkedin.png" alt="" style="width: 100%;">
+          </a>
+        </div>
+        <br>
+        <div style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%;">
+          <input  type="text" id="email" formControlName="email" placeholder="Email"/>
+        </div>
+        <br>
+        <div style="border: 1px solid #ccc; border-radius: 20px; padding: 10px; box-shadow: 0 0 8px rgba(0, 0, 0, 0.3); width: 105%;">
+          <input type="password" id="password" formControlName="password" placeholder="Contraseña"/>
+        </div>
+        <br>
+        <h2>
+          <a class="not-cuenta" style="text-decoration: none;" href="/users/agregar">¿Aún No Tienes Cuenta?</a>
+        </h2>
+        <button class="botonnn" type="submit">Iniciar sesión</button>
+      </form>
+    </div>
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-right">
+          <h1>Hola!!!</h1>
+          <p style="font-weight: 500;">Crear tu cuenta</p>
+          <div class="ContBoton">
+            <a style="text-decoration: none;" href="/users/agregar" class="buttonLogin3" class="botonnn2">Regístrate</a>
+          </div> 
+          <!-- Agrega un botón para abrir la ventana emergente -->
+          <a href="/recuperacion-contrasena" class="button-login" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 600;">Recuperar Contraseña</a>    
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <br><br><br><br><br><br>
+  </div>
+</div><br>

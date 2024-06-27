@@ -1,0 +1,68 @@
+<div class="container mt-4">
+    <a href="/secretaria-home-2">
+        <button class="boxed-btn" style="padding: 10px; font-weight: 600; text-decoration: none;">↺ Atrás</button>
+    </a>ㅤ
+    <a href="/citas-registrar-secretaria">
+        <button class="boxed-btn" style="padding: 10px; font-weight: 600; text-decoration: none;">Agregar Agenda</button>
+    </a>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="labelCitaBuscar">Filtrar Por Médico</label>
+                <input placeholder="Documento o Nombre Del Médico" type="text" class="form-control" [(ngModel)]="filtroMedico" name="filtroMedico">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label class="labelCitaBuscar">Filtrar Por Paciente</label>
+                <input placeholder="Documento o Nombre Del Paciente" type="text" class="form-control" [(ngModel)]="filtroPaciente" name="filtroPaciente">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="tabla-imprimir" class="container mt-4">
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover shadow-lg" style="border-radius: 15px;">
+            <thead class="bg-primary text-white">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Paciente</th>
+                    <th>Médico</th>
+                    <th>Especialidad</th>
+                    <th>Facturación</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cita of filtrarCitas(citas | async) || []; let i = index" [class.odd]="i % 2 !== 0">
+                    <td>{{ cita.fecha }}</td>
+                    <td>{{ cita.hora }}</td>
+                    <td>{{ cita.paciente }}</td>
+                    <td>{{ cita.medico }}</td>
+                    <td>{{ cita.especialidad }}</td>
+                    <td [ngClass]="{'facturacion-pendiente': cita.facturacion === 'pendiente', 'facturacion-pagada': cita.facturacion === 'pagada'}">{{ cita.facturacion }}</td>
+                    <td [ngClass]="{'estado-pendiente': cita.estado === 'pendiente', 'estado-cancelada': cita.estado === 'cancelada', 'estado-confirmada': cita.estado === 'confirmada'}">{{ cita.estado }}</td>
+                    <td class="text-center">
+                        <a [routerLink]="['/citas-editar/editar/', cita.id]" class="btn btn-sm btn-outline-primary mr-2">
+                            <img src="../../../../assets/images/editar.png" alt="Editar cita" style="width: 19px; height: 19px;">
+                        </a>
+                    </td>                 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <a style="cursor: pointer;" (click)="imprimirTabla()"><img src="../../../../../assets/images/imprimir.png" width="35px" alt=""></a>
+</div><br><br>
+
+
+

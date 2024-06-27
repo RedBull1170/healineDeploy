@@ -1,0 +1,99 @@
+<div class="bradcam_area breadcam_bg_5 bradcam_overlay" style="background-image: url(../../../../assets/images/bradcam8.jpg);">
+    <!-- Bradcam content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="bradcam_text">
+                    <h3>PQRS</h3>
+                    <br>
+                    <br>
+                    <h5 style="color: aliceblue; text-align: center;">Peticiones / Quejas / Reclamos / Sugerencias</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="contact-section"> 
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="contact-title" style="font-size: 30px;">Cuéntanos</h2>
+            </div>
+            <div class="col-lg-8">
+                <form class="form-contact contact_form" id="contactForm" #pqrsForm="ngForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group">
+                                <select class="form-control" name="tipo" id="tipo" style="font-size: 18px;" [(ngModel)]="pqrs.tipo" required>
+                                    <option value="" selected disabled>Selecciona un tema</option>
+                                    <option value="Peticion">Petición</option>
+                                    <option value="Queja">Queja</option>
+                                    <option value="Reclamo">Reclamo</option>
+                                    <option value="Sugerencia">Sugerencia</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                            <div class="form-group">
+                                <textarea class="form-control w-100" name="descripcion" id="descripcion" cols="30" rows="9" placeholder="Introduce la descripción" [(ngModel)]="pqrs.descripcion" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input class="form-control valid" name="email" id="email" type="email" placeholder="Introduce tu Email" [(ngModel)]="pqrs.email" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input class="form-control valid" name="telefono" id="telefono" type="number" placeholder="Introduce tu teléfono" [(ngModel)]="pqrs.telefono" required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <input class="form-control valid" name="documento" id="documento" type="number" placeholder="Introduce tu documento" [(ngModel)]="pqrs.documento" required>
+                            </div>
+                        </div>
+
+                        
+                    </div>                
+                    
+                    <div class="form-group mt-3">
+                        <button type="submit" class="button button-contactForm boxed-btn"  [disabled]="!pqrsForm.form.valid && isFormSubmitted">Enviar</button>
+                    </div>
+                </form>
+            </div>
+            <!-- Contact Info -->
+            <div class="col-lg-3 offset-lg-1">
+                <!-- Contact Info Content -->
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><img src="../../../../assets/images/ubi.png" width="40px" alt=""></span>
+                    <!-- Contact Info Details -->
+                    <div class="media-body">
+                        <h3>Colombia - Bogotá</h3>
+                        <p>Cll 111 n 11 - 11</p>
+                    </div>
+                </div>
+                <!-- More Contact Info -->
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><img src="../../../../assets/images/tele2.png" width="40px" alt=""></span>
+                    <!-- Contact Info Details -->
+                    <div class="media-body">
+                        <h3>+57 123 456 789</h3>
+                        <p>De Lunes A Domingo De 6am A 11pm</p>
+                    </div>
+                </div>
+                <!-- More Contact Info -->
+                <div class="media contact-info">
+                    <span class="contact-info__icon"><img src="../../../../assets/images/web.png" width="40px" alt=""></span>
+                    <!-- Contact Info Details -->
+                    <div class="media-body">
+                        <h3>NovaEPS@gmail.com</h3>
+                        <p>Envíenos su consulta en cualquier momento!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
